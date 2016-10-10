@@ -19,7 +19,9 @@ import java.util.List;
  */
 
 public class RvStyleActivity extends AppCompatActivity {
+
     private RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerViewHorizontal;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,22 +33,40 @@ public class RvStyleActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        //水平RecyclerView
+        mRecyclerViewHorizontal= (RecyclerView) findViewById(R.id.recycler_view_horizontal);
         //设置布局管理器
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        mRecyclerViewHorizontal.setLayoutManager(linearLayoutManager);
         //设置item增加或移除动画
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerViewHorizontal.setItemAnimator(new DefaultItemAnimator());
         //设置自定义分割线
+        mRecyclerViewHorizontal.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL_LIST));
+        //style
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(this);
+        linearLayoutManager2.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(linearLayoutManager2);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
     }
     private void initListener() {
     }
     private void initData() {
+        //水平RecyclerView
         List<String> data = new ArrayList<String>();
         for (int i = 'A'; i < 'z'; i++) {
             data.add("" + (char) i);
         }
         RvGeneralAdapter adapter=new RvGeneralAdapter(data);
+        mRecyclerViewHorizontal.setAdapter(adapter);
+        //style
+        List<String> data2 = new ArrayList<String>();
+        for (int i = 'A'; i < 'z'; i++) {
+            data2.add("" + (char) i);
+        }
+        RvGeneralAdapter adapter2=new RvGeneralAdapter(data2);
         mRecyclerView.setAdapter(adapter);
     }
 }
