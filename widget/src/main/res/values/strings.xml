@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">widget</string>
+    <string name="rv_main">RecyclerView</string>
+    <string name="rv_test">rv_test</string>
+</resources>
