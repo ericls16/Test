@@ -26,9 +26,15 @@
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
         <activity
-            android:name=".ui.recyclerview.RvTestActivity"
+            android:name=".ui.recyclerview.RvGeneralActivity"
             android:screenOrientation="portrait"
-            android:label="@string/rv_test"
+            android:label="@string/rv_general"
+            android:configChanges="keyboardHidden|orientation|screenSize">>
+        </activity>
+        <activity
+            android:name=".ui.recyclerview.RvStyleActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/rv_style"
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
     </application>

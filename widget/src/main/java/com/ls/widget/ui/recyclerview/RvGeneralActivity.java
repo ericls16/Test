@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.ls.widget.R;
-import com.ls.widget.adapter.RvTestAdapter;
+import com.ls.widget.adapter.RvGeneralAdapter;
 import com.ls.widget.widget.DividerItemDecoration;
 
 import java.util.ArrayList;
@@ -21,14 +21,14 @@ import java.util.List;
  * Created by VIC1 on 2016/10/10.
  */
 
-public class RvTestActivity extends AppCompatActivity {
+public class RvGeneralActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rv_test);
+        setContentView(R.layout.activity_rv_general);
         initView();
         initListener();
         initData();
@@ -49,12 +49,12 @@ public class RvTestActivity extends AppCompatActivity {
 //        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mRecyclerView, new ClickListener() {
 //            @Override
 //            public void onClick(View view, int position) {
-//                Toast.makeText(RvTestActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RvGeneralActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
 //            }
 //
 //            @Override
 //            public void onLongClick(View view, int position) {
-//                Toast.makeText(RvTestActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RvGeneralActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
 //            }
 //        }));
     }
@@ -64,19 +64,19 @@ public class RvTestActivity extends AppCompatActivity {
         for (int i = 'A'; i < 'z'; i++) {
             data.add("" + (char) i);
         }
-        RvTestAdapter adapter=new RvTestAdapter(data);
+        RvGeneralAdapter adapter=new RvGeneralAdapter(data);
 
         //点击事件方法二：
-        adapter.setOnItemClickListener(new RvTestAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new RvGeneralAdapter.OnItemClickListener() {
 
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(RvTestActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(RvGeneralActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onItemLongClick(View view, int position) {
-                Toast.makeText(RvTestActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(RvGeneralActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
             }
         });
 

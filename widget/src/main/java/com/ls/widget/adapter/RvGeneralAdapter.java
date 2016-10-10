@@ -14,7 +14,7 @@ import java.util.List;
  * Created by VIC1 on 2016/10/10.
  */
 
-public class RvTestAdapter extends RecyclerView.Adapter<RvTestAdapter.MyViewHolder> {
+public class RvGeneralAdapter extends RecyclerView.Adapter<RvGeneralAdapter.MyViewHolder> {
 
     private List<String> data;
 
@@ -28,13 +28,13 @@ public class RvTestAdapter extends RecyclerView.Adapter<RvTestAdapter.MyViewHold
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
-    public RvTestAdapter(List<String> data) {
+    public RvGeneralAdapter(List<String> data) {
         this.data = data;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_act_rv_test,parent,false);
+        View itemView= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_general,parent,false);
         return new MyViewHolder(itemView);
     }
 
