@@ -8,13 +8,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ls.retrofit.MainActivity">
+    android:orientation="vertical"
+    tools:context="com.ls.app.MainActivity">
 
     <Button
-        android:id="@+id/btn_test"
+        android:id="@+id/record_pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="test"
-        android:textAllCaps="false" />
+        android:textAllCaps="true"
+        android:text="记住密码" />
 </LinearLayout>
