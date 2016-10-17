@@ -6,12 +6,33 @@
     android:orientation="vertical"
     android:weightSum="1">
 
+    <!--
+    android:typeface="normal":设置字体类型
+    android:track="":设置开关的轨迹图片
+    android:textOff="开"：设置开关checked的文字
+    android:textOn="关"：设置开关关闭时的文字
+    android:thumb="":设置开关的图片
+    android:switchMinWidth=""：开关最小宽度
+    android:switchPadding="":设置开关 与文字的空白距离
+    android:switchTextAppearance="":设置文本的风格
+    android:checked="":设置初始选中状态
+    android:splitTrack="true":是否设置一个间隙，让滑块与底部图片分隔（API 21及以上）
+    android:showText="true"：设置是否显示开关上的文字（API 21及以上）
+    -->
+
     <Switch
         android:id="@+id/sys"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Switch" />
+        android:text="Switch1" />
+
+    <Switch
+        android:id="@+id/sysx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Switch2" />
 
     <!-- iphone风格 -->
     <!-- thumb属性指的是：switch圆形滑块 -->
@@ -30,13 +51,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="SwitchCompat" />
+        android:text="SwitchCompat1" />
 
     <android.support.v7.widget.SwitchCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="iphone风格：SwitchCompat"
+        android:track="@color/color_xswitch"
+        android:text="SwitchCompat2" />
+
+    <android.support.v7.widget.SwitchCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="SwitchCompat3"
         android:thumb="@drawable/switch_thumb"
         app:track="@drawable/switch_track"/>
 
