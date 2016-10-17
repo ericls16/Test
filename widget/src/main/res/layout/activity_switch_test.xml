@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <Switch
+        android:id="@+id/sys"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="系统的" />
+
+    <!-- iphone风格 -->
+    <!-- thumb属性指的是：switch圆形滑块 -->
+    <!-- track属性指的是：switch底部滑道轨迹 -->
+    <Switch
+        android:id="@+id/xxx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="自定义：iphone风格"
+        android:thumb="@drawable/switch_thumb"
+        android:track="@drawable/switch_track" />
+
+
+</LinearLayout>

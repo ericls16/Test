@@ -1,4 +1,4 @@
-package com.ls.widget.ui.recyclerview;
+package com.ls.widget.ui.xrecyclerview;
 
 import android.content.Intent;
 import android.os.Bundle;

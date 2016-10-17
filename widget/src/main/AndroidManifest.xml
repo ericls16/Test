@@ -20,21 +20,28 @@
         </activity>
         <!--recyclerview-->
         <activity
-            android:name=".ui.recyclerview.RvMainActivity"
+            android:name=".ui.xrecyclerview.RvMainActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_main"
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
         <activity
-            android:name=".ui.recyclerview.RvGeneralActivity"
+            android:name=".ui.xrecyclerview.RvGeneralActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_general"
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
         <activity
-            android:name=".ui.recyclerview.RvStyleActivity"
+            android:name=".ui.xrecyclerview.RvStyleActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_style"
+            android:configChanges="keyboardHidden|orientation|screenSize">>
+        </activity>
+        <!--recyclerview-->
+        <activity
+            android:name=".ui.xswitch.SwitchTestActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/rv_main"
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
     </application>

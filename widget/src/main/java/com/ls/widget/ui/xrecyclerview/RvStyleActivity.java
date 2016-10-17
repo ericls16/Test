@@ -1,4 +1,4 @@
-package com.ls.widget.ui.recyclerview;
+package com.ls.widget.ui.xrecyclerview;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
