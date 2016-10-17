@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="系统的" />
+        android:text="Switch" />
 
     <!-- iphone风格 -->
     <!-- thumb属性指的是：switch圆形滑块 -->
@@ -20,9 +21,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="自定义：iphone风格"
+        android:text="iphone风格：Switch"
         android:thumb="@drawable/switch_thumb"
         android:track="@drawable/switch_track" />
+
+    <!--SwitchCompat替代Switch向5.0以下兼容-->
+    <android.support.v7.widget.SwitchCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="SwitchCompat" />
+
+    <android.support.v7.widget.SwitchCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="iphone风格：SwitchCompat"
+        android:thumb="@drawable/switch_thumb"
+        app:track="@drawable/switch_track"/>
 
 
 </LinearLayout>
