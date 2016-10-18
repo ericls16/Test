@@ -18,6 +18,14 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:onClick="onClick"
-        android:text="style"/>
+        android:text="grid"/>
+
+    <Button
+        android:id="@+id/btn_grid2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        android:text="grid2"/>
 
 </LinearLayout>
