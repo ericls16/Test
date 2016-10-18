@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.ls.widget.R;
 import com.ls.widget.adapter.RvGeneralAdapter;
+import com.ls.widget.widget.decoration.DividerGridItemDecoration;
 import com.ls.widget.widget.decoration.DividerListItemDecoration;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class RvGridActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,4));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.addItemDecoration(new DividerListItemDecoration(this, DividerListItemDecoration.VERTICAL_LIST));
+        mRecyclerView.addItemDecoration(new DividerGridItemDecoration(this));
     }
     private void initListener() {
     }
@@ -70,6 +71,6 @@ public class RvGridActivity extends AppCompatActivity {
             data2.add("" + (char) i);
         }
         RvGeneralAdapter adapter2=new RvGeneralAdapter(data2);
-        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(adapter2);
     }
 }
