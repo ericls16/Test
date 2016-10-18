@@ -89,8 +89,8 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
                 }
             } else {
                 childCount = childCount - childCount % spanCount;
+                // 如果是最后一列，则不需要绘制右边
                 if (pos >= childCount) {
-                    // 如果是最后一列，则不需要绘制右边
                     return true;
                 }
             }
@@ -102,8 +102,8 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
         LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
             childCount = childCount - childCount % spanCount;
+            // 如果是最后一行，则不需要绘制底部
             if (pos >= childCount) {
-                // 如果是最后一行，则不需要绘制底部
                 return true;
             }
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
