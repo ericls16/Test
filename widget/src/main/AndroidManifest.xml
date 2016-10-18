@@ -26,13 +26,13 @@
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
         <activity
-            android:name=".ui.xrecyclerview.RvGeneralActivity"
+            android:name=".ui.xrecyclerview.RvListActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_general"
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
         <activity
-            android:name=".ui.xrecyclerview.RvStyleActivity"
+            android:name=".ui.xrecyclerview.RvGridActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_style"
             android:configChanges="keyboardHidden|orientation|screenSize">>

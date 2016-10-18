@@ -1,4 +1,4 @@
-package com.ls.widget.widget;
+package com.ls.widget.widget.decoration;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,12 +11,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
- * recyclerview的分割线
+ * recyclerview的分割线:
+ * 注：适用于ListView样式
  * 注：不能给GridView样式的布局同时设置横竖分割线
  * Created by VIC1 on 2016/10/10.
  */
 
-public class DividerItemDecoration extends RecyclerView.ItemDecoration {
+public class DividerListItemDecoration extends RecyclerView.ItemDecoration {
 
     public static final int HORIZONTAL_LIST = LinearLayoutManager.HORIZONTAL;
     public static final int VERTICAL_LIST = LinearLayoutManager.VERTICAL;
@@ -28,7 +29,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     private Drawable mDivider;
     private int mOrientation;
 
-    public DividerItemDecoration(Context context, int orientation) {
+    public DividerListItemDecoration(Context context, int orientation) {
         final TypedArray a = context.obtainStyledAttributes(ATTRS);
         mDivider = a.getDrawable(0);
         a.recycle();

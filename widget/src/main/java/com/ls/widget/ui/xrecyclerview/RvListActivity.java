@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.ls.widget.R;
 import com.ls.widget.adapter.RvGeneralAdapter;
-import com.ls.widget.widget.DividerItemDecoration;
+import com.ls.widget.widget.decoration.DividerListItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.List;
  * Created by VIC1 on 2016/10/10.
  */
 
-public class RvGeneralActivity extends AppCompatActivity {
+public class RvListActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
 
@@ -41,7 +41,7 @@ public class RvGeneralActivity extends AppCompatActivity {
         //设置item增加或移除动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //设置自定义分割线
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+        mRecyclerView.addItemDecoration(new DividerListItemDecoration(this, DividerListItemDecoration.VERTICAL_LIST));
     }
 
     private void initListener() {
@@ -49,12 +49,12 @@ public class RvGeneralActivity extends AppCompatActivity {
 //        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mRecyclerView, new ClickListener() {
 //            @Override
 //            public void onClick(View view, int position) {
-//                Toast.makeText(RvGeneralActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RvListActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
 //            }
 //
 //            @Override
 //            public void onLongClick(View view, int position) {
-//                Toast.makeText(RvGeneralActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RvListActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
 //            }
 //        }));
     }
@@ -71,12 +71,12 @@ public class RvGeneralActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(RvGeneralActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(RvListActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onItemLongClick(View view, int position) {
-                Toast.makeText(RvGeneralActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(RvListActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -10,16 +10,19 @@ import android.support.v7.widget.RecyclerView;
 
 import com.ls.widget.R;
 import com.ls.widget.adapter.RvGeneralAdapter;
-import com.ls.widget.widget.DividerItemDecoration;
+import com.ls.widget.widget.decoration.DividerListItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 一行多列的实现
+ * 1> LinearLayoutManager: 需要滑动才能看到下一列
+ * 2> GridLayoutManager: 网格样式
  * Created by VIC1 on 2016/10/10.
  */
 
-public class RvStyleActivity extends AppCompatActivity {
+public class RvGridActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerView mRecyclerViewHorizontal;
@@ -43,13 +46,13 @@ public class RvStyleActivity extends AppCompatActivity {
         //设置item增加或移除动画
         mRecyclerViewHorizontal.setItemAnimator(new DefaultItemAnimator());
         //设置自定义分割线
-        mRecyclerViewHorizontal.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL_LIST));
+        mRecyclerViewHorizontal.addItemDecoration(new DividerListItemDecoration(this, DividerListItemDecoration.HORIZONTAL_LIST));
         //-------------------------------------------------------------------------------------
         //2.gridview样式的布局
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,4));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+        mRecyclerView.addItemDecoration(new DividerListItemDecoration(this, DividerListItemDecoration.VERTICAL_LIST));
     }
     private void initListener() {
     }

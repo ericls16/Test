@@ -24,10 +24,10 @@ public class RvMainActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_general:
-                startActivity(new Intent(this,RvGeneralActivity.class));
+                startActivity(new Intent(this,RvListActivity.class));
                 break;
             case R.id.btn_style:
-                startActivity(new Intent(this,RvStyleActivity.class));
+                startActivity(new Intent(this,RvGridActivity.class));
                 break;
             default:
                 break;
