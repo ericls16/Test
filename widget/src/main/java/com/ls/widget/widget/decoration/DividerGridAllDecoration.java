@@ -13,6 +13,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 /**
+ * 四周都有分割线
  * Created by VIC1 on 2016/10/18.
  */
 
