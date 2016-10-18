@@ -20,6 +20,7 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
 
     private static final int[] ATTRS = new int[]{android.R.attr.listDivider};
     private Drawable mDivider;
+    private int columnNumber;
 
     public DividerGridAllDecoration(Context context) {
         final TypedArray a = context.obtainStyledAttributes(ATTRS);
@@ -29,6 +30,7 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void onDraw(Canvas c, RecyclerView parent, State state) {
+        columnNumber=getSpanCount(parent);
         drawHorizontal(c, parent);
         drawVertical(c, parent);
     }
@@ -55,7 +57,7 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
             int top = 0; //?
             int bottom = 0; //?
 
-            if ((i / getSpanCount(parent)) == 0) {
+            if ((i / columnNumber) == 0) {
                 //画item最上面的分割线
                 top = 0;
                 bottom = top + mDivider.getIntrinsicHeight();
@@ -73,7 +75,6 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
                 mDivider.setBounds(left, top, right, bottom);
                 mDivider.draw(c);
             }
-
         }
     }
 
@@ -89,7 +90,7 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
             int left = 0; //?
             int right = 0; //?
 
-            if ((i % getSpanCount(parent)) == 0) {
+            if ((i % columnNumber) == 0) {
                 //item左边分割线
                 left = 0;
                 right = left + mDivider.getIntrinsicWidth();
@@ -160,21 +161,6 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
         }
         return false;
     }
-
-//    @Override
-//    public void getItemOffsets(Rect outRect, int itemPosition, RecyclerView parent) {
-//        int spanCount = getSpanCount(parent);
-//        int childCount = parent.getAdapter().getItemCount();
-//        if (isLastRaw(parent, itemPosition, spanCount, childCount)) {
-//            // 如果是最后一行，则不需要绘制底部
-//            outRect.set(0, 0, mDivider.getIntrinsicWidth(), 0);
-//        } else if (isLastColum(parent, itemPosition, spanCount, childCount)) {
-//            // 如果是最后一列，则不需要绘制右边
-//            outRect.set(0, 0, 0, mDivider.getIntrinsicHeight());
-//        } else {
-//            outRect.set(0, 0, mDivider.getIntrinsicWidth(), mDivider.getIntrinsicHeight());
-//        }
-//    }
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
