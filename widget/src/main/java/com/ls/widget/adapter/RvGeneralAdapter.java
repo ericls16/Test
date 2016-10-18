@@ -60,7 +60,7 @@ public class RvGeneralAdapter extends RecyclerView.Adapter<RvGeneralAdapter.MyVi
                 public boolean onLongClick(View v) {
                     int pos = holder.getLayoutPosition();
                     mOnItemClickListener.onItemLongClick(holder.itemView, pos);
-                    return false;
+                    return true; //这里需要消耗掉，不然就会触发单击事件
                 }
             });
         }
