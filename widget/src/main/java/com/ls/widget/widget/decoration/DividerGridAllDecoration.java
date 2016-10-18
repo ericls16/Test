@@ -52,10 +52,28 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int left = child.getLeft() - params.leftMargin;
             final int right = child.getRight() + params.rightMargin + mDivider.getIntrinsicWidth();
-            final int top = child.getBottom() + params.bottomMargin;
-            final int bottom = top + mDivider.getIntrinsicHeight();
-            mDivider.setBounds(left, top, right, bottom);
-            mDivider.draw(c);
+            int top = 0; //?
+            int bottom = 0; //?
+
+            if ((i / getSpanCount(parent)) == 0) {
+                //画item最上面的分割线
+                top = 0;
+                bottom = top + mDivider.getIntrinsicHeight();
+                mDivider.setBounds(left, top, right, bottom);
+                mDivider.draw(c);
+                //画item下面的分割线
+                top = child.getBottom() + params.bottomMargin;
+                bottom = top + mDivider.getIntrinsicHeight();
+                mDivider.setBounds(left, top, right, bottom);
+                mDivider.draw(c);
+            } else {
+                //画item下面的分割线
+                top = child.getBottom() + params.bottomMargin;
+                bottom = top + mDivider.getIntrinsicHeight();
+                mDivider.setBounds(left, top, right, bottom);
+                mDivider.draw(c);
+            }
+
         }
     }
 
@@ -63,11 +81,27 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
-            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+
+            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
+                    .getLayoutParams();
             final int top = child.getTop() - params.topMargin;
             final int bottom = child.getBottom() + params.bottomMargin;
-            final int left = child.getRight() + params.rightMargin;
-            final int right = left + mDivider.getIntrinsicWidth();
+            int left = 0; //?
+            int right = 0; //?
+
+            if ((i % getSpanCount(parent)) == 0) {
+                //item左边分割线
+                left = 0;
+                right = left + mDivider.getIntrinsicWidth();
+                mDivider.setBounds(left, top, right, bottom);
+                mDivider.draw(c);
+                //item右边分割线
+                left = child.getRight() + params.rightMargin;
+                right = left + mDivider.getIntrinsicWidth();
+            } else {
+                left = child.getRight() + params.rightMargin;
+                right = left + mDivider.getIntrinsicWidth();
+            }
 
             mDivider.setBounds(left, top, right, bottom);
             mDivider.draw(c);
@@ -77,10 +111,10 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
     private boolean isLastColum(RecyclerView parent, int pos, int spanCount, int childCount) {
         LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
-            // 如果是最后一列，则不需要绘制右边
+            /*// 如果是最后一列，则不需要绘制右边
             if ((pos + 1) % spanCount == 0) {
                 return true;
-            }
+            }*/
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
             int orientation = ((StaggeredGridLayoutManager) layoutManager).getOrientation();
             if (orientation == StaggeredGridLayoutManager.VERTICAL) {
@@ -102,11 +136,11 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
     private boolean isLastRaw(RecyclerView parent, int pos, int spanCount, int childCount) {
         LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
-            childCount = childCount - childCount % spanCount;
+            /*childCount = childCount - childCount % spanCount;
             // 如果是最后一行，则不需要绘制底部
             if (pos >= childCount) {
                 return true;
-            }
+            }*/
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
             int orientation = ((StaggeredGridLayoutManager) layoutManager).getOrientation();
             // StaggeredGridLayoutManager 且纵向滚动

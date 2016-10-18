@@ -9,18 +9,18 @@ import android.support.v7.widget.RecyclerView;
 
 import com.ls.widget.R;
 import com.ls.widget.adapter.RvGeneralAdapter;
-import com.ls.widget.widget.decoration.DividerGridItemDecoration;
+import com.ls.widget.widget.decoration.DividerGridAllDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 四周加上分割线
  * Created by VIC1 on 2016/10/18.
  */
 
 public class RvGrid2Activity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private RecyclerView mRecyclerViewHorizontal;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class RvGrid2Activity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,4));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.addItemDecoration(new DividerGridItemDecoration(this));
+        mRecyclerView.addItemDecoration(new DividerGridAllDecoration(this));
     }
 
     private void initData() {
