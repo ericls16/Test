@@ -11,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
+ * recyclerview的分割线
+ * 注：不能给GridView样式的布局同时设置横竖分割线
  * Created by VIC1 on 2016/10/10.
  */
 

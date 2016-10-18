@@ -34,7 +34,7 @@ public class RvStyleActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        //水平RecyclerView
+        //1.水平RecyclerView
         mRecyclerViewHorizontal= (RecyclerView) findViewById(R.id.recycler_view_horizontal);
         //设置布局管理器
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -44,7 +44,8 @@ public class RvStyleActivity extends AppCompatActivity {
         mRecyclerViewHorizontal.setItemAnimator(new DefaultItemAnimator());
         //设置自定义分割线
         mRecyclerViewHorizontal.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL_LIST));
-        //style
+        //-------------------------------------------------------------------------------------
+        //2.gridview样式的布局
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,4));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

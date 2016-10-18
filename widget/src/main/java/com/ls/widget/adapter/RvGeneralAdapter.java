@@ -11,6 +11,7 @@ import com.ls.widget.R;
 import java.util.List;
 
 /**
+ * 包含点击事件的监听
  * Created by VIC1 on 2016/10/10.
  */
 
@@ -20,7 +21,9 @@ public class RvGeneralAdapter extends RecyclerView.Adapter<RvGeneralAdapter.MyVi
 
     // item点击监听
     public interface OnItemClickListener {
+        //单机事件
         void onItemClick(View view, int position);
+        //长按事件
         void onItemLongClick(View view , int position);
     }
     private OnItemClickListener mOnItemClickListener;
