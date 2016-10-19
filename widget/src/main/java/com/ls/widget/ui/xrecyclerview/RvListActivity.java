@@ -17,7 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * RecyclerView一般使用（垂直线性布局）
+ * RecyclerView
+ * 1> 一般使用: ListView样式，四周无分割线包裹
+ * 2> item的点击事件：两种实现方式.
+ *
  * Created by VIC1 on 2016/10/10.
  */
 

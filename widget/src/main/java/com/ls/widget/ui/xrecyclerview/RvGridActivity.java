@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 一行多列的实现
- * 1> LinearLayoutManager: 需要滑动才能看到下一列
- * 2> GridLayoutManager: 网格样式
+ * RecyclerView
+ * 1> LinearLayoutManager: 需要向左滑动才能看到下一列.
+ * 2> GridLayoutManager: 网格样式，四周无分割线包裹.
  * Created by VIC1 on 2016/10/10.
  */
 

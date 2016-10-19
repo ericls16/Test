@@ -15,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 四周加上分割线
+ * RecyclerView
+ * 1> 网格样式布局，四周加上分割线包裹
+ *
  * Created by VIC1 on 2016/10/18.
  */
 
