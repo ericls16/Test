@@ -25,7 +25,7 @@ public class RvGridAllActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rv_grid2);
+        setContentView(R.layout.activity_rv_grid_all);
         initView();
         initData();
     }
