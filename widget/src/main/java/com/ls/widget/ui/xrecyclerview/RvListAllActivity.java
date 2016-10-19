@@ -34,7 +34,7 @@ public class RvListAllActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.addItemDecoration(new DividerListAllDecoration(this, DividerListAllDecoration.VERTICAL_LIST));
+        mRecyclerView.addItemDecoration(new DividerListAllDecoration(this));
     }
 
     private void initData() {
