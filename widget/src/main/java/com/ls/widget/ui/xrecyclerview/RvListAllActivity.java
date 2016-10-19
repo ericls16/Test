@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.ls.widget.R;
 import com.ls.widget.adapter.RvGeneralAdapter;
-import com.ls.widget.widget.decoration.DividerListItemDecoration;
+import com.ls.widget.widget.decoration.DividerListAllDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class RvListAllActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.addItemDecoration(new DividerListItemDecoration(this, DividerListItemDecoration.VERTICAL_LIST));
+        mRecyclerView.addItemDecoration(new DividerListAllDecoration(this, DividerListAllDecoration.VERTICAL_LIST));
     }
 
     private void initData() {
