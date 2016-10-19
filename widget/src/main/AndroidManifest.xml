@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--recyclerview-->
+        <!--RecyclerView-->
         <activity
             android:name=".ui.xrecyclerview.RvMainActivity"
             android:screenOrientation="portrait"
@@ -28,26 +28,32 @@
         <activity
             android:name=".ui.xrecyclerview.RvListActivity"
             android:screenOrientation="portrait"
-            android:label="@string/rv_general"
+            android:label="@string/rv_list"
+            android:configChanges="keyboardHidden|orientation|screenSize">>
+        </activity>
+        <activity
+            android:name=".ui.xrecyclerview.RvListAllActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/rv_list_all"
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
         <activity
             android:name=".ui.xrecyclerview.RvGridActivity"
             android:screenOrientation="portrait"
-            android:label="@string/rv_style"
+            android:label="@string/rv_grid"
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
         <activity
             android:name=".ui.xrecyclerview.RvGridAllActivity"
             android:screenOrientation="portrait"
-            android:label="@string/rv_style"
+            android:label="@string/rv_grid_all"
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
-        <!--recyclerview-->
+        <!--Switch-->
         <activity
             android:name=".ui.xswitch.SwitchTestActivity"
             android:screenOrientation="portrait"
-            android:label="@string/rv_main"
+            android:label="@string/switch_test"
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
     </application>

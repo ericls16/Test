@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">widget</string>
+    <!--RecyclerView-->
     <string name="rv_main">RecyclerView</string>
-    <string name="rv_general">rv_test</string>
-    <string name="rv_style">rv_style</string>
+    <string name="rv_list">rv_list</string>
+    <string name="rv_list_all">rv_list_all</string>
+    <string name="rv_grid">rv_grid</string>
+    <string name="rv_grid_all">rv_grid_all</string>
+
+    <!--switch-->
+    <string name="switch_test">switch_test</string>
+
 </resources>

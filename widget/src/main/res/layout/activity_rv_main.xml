@@ -10,7 +10,15 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:onClick="onClick"
-        android:text="List_divider"/>
+        android:text="list"/>
+
+    <Button
+        android:id="@+id/btn_list_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        android:text="list_divider_all"/>
 
     <Button
         android:id="@+id/btn_grid"
@@ -18,7 +26,7 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:onClick="onClick"
-        android:text="grid_divider"/>
+        android:text="grid"/>
 
     <Button
         android:id="@+id/btn_grid_all"
