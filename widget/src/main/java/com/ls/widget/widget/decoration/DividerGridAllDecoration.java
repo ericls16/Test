@@ -59,8 +59,8 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int left = child.getLeft() - params.leftMargin;
             final int right = child.getRight() + params.rightMargin + mDivider.getIntrinsicWidth();
-            int top = 0; //?
-            int bottom = 0; //?
+            int top = 0;
+            int bottom = 0;
 
             if ((i / columnNumber) == 0) {
                 //画item最上面的分割线
@@ -87,13 +87,11 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
-
-            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
-                    .getLayoutParams();
+            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getTop() - params.topMargin;
             final int bottom = child.getBottom() + params.bottomMargin;
-            int left = 0; //?
-            int right = 0; //?
+            int left = 0;
+            int right = 0;
 
             if ((i % columnNumber) == 0) {
                 //item左边分割线
