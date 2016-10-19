@@ -36,8 +36,12 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
         drawVertical(c, parent);
     }
 
+    /**
+     * 列数
+     * @param parent
+     * @return
+     */
     private int getSpanCount(RecyclerView parent) {
-        // 列数
         int spanCount = -1;
         LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
