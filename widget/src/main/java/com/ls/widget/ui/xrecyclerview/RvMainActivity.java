@@ -30,7 +30,7 @@ public class RvMainActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(this,RvGridActivity.class));
                 break;
             case R.id.btn_grid2:
-                startActivity(new Intent(this,RvGrid2Activity.class));
+                startActivity(new Intent(this,RvGridAllActivity.class));
                 break;
             default:
                 break;

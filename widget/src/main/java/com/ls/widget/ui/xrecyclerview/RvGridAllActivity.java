@@ -19,7 +19,7 @@ import java.util.List;
  * Created by VIC1 on 2016/10/18.
  */
 
-public class RvGrid2Activity extends AppCompatActivity {
+public class RvGridAllActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
 
     @Override

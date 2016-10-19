@@ -38,7 +38,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
         <activity
-            android:name=".ui.xrecyclerview.RvGrid2Activity"
+            android:name=".ui.xrecyclerview.RvGridAllActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_style"
             android:configChanges="keyboardHidden|orientation|screenSize">>
