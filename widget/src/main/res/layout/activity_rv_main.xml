@@ -42,6 +42,6 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:onClick="onClick"
-        android:text="grid_divider_all"/>
+        android:text="item_line"/>
 
 </LinearLayout>
