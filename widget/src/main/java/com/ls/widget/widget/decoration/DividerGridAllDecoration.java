@@ -13,7 +13,8 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 /**
- * 四周都有分割线
+ * 分割线
+ * 注：类似GridView网格布局的分割线，支持四周有边框
  * Created by VIC1 on 2016/10/18.
  */
 

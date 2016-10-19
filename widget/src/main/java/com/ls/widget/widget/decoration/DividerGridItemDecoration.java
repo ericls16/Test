@@ -13,7 +13,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 /**
- * @author zhy
+ * 分割线
+ * 注：类似GridView网格布局的分割线，四周无边框
+ * Created by VIC1 on 2016/10/18.
  */
 public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
 
