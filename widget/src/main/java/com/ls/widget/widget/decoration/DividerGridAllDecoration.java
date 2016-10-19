@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.State;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -39,6 +38,7 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
 
     /**
      * 列数
+     *
      * @param parent
      * @return
      */
@@ -65,7 +65,7 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
 
             if ((i / columnNumber) == 0) {
                 //画item最上面的分割线
-                top = child.getTop()+params.topMargin;
+                top = child.getTop() + params.topMargin;
                 bottom = top + mDivider.getIntrinsicHeight();
                 mDivider.setBounds(left, top, right, bottom);
                 mDivider.draw(c);
@@ -96,7 +96,7 @@ public class DividerGridAllDecoration extends RecyclerView.ItemDecoration {
 
             if ((i % columnNumber) == 0) {
                 //item左边分割线
-                left = child.getLeft()+params.leftMargin;
+                left = child.getLeft() + params.leftMargin;
                 right = left + mDivider.getIntrinsicWidth();
                 mDivider.setBounds(left, top, right, bottom);
                 mDivider.draw(c);
