@@ -5,27 +5,27 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/btn_general"
+        android:id="@+id/btn_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:onClick="onClick"
-        android:text="一般用法(垂直线性列表)"/>
+        android:text="List_divider"/>
 
     <Button
-        android:id="@+id/btn_style"
+        android:id="@+id/btn_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:onClick="onClick"
-        android:text="grid"/>
+        android:text="grid_divider"/>
 
     <Button
-        android:id="@+id/btn_grid2"
+        android:id="@+id/btn_grid_all"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:onClick="onClick"
-        android:text="grid2"/>
+        android:text="grid_divider_all"/>
 
 </LinearLayout>

@@ -23,13 +23,13 @@ public class RvMainActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn_general:
+            case R.id.btn_list:
                 startActivity(new Intent(this,RvListActivity.class));
                 break;
-            case R.id.btn_style:
+            case R.id.btn_grid:
                 startActivity(new Intent(this,RvGridActivity.class));
                 break;
-            case R.id.btn_grid2:
+            case R.id.btn_grid_all:
                 startActivity(new Intent(this,RvGridAllActivity.class));
                 break;
             default:
