@@ -37,7 +37,7 @@ public class RvGeneralAdapter extends RecyclerView.Adapter<RvGeneralAdapter.MyVi
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_general,parent,false);
+        View itemView= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_list,parent,false);
         return new MyViewHolder(itemView);
     }
 

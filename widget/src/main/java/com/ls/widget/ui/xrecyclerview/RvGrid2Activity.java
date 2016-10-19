@@ -43,6 +43,11 @@ public class RvGrid2Activity extends AppCompatActivity {
         for (int i = 'A'; i < 'z'; i++) {
             data.add("" + (char) i);
         }
+
+        for (int i = 'A'; i < 'z'; i++) {
+            data.add("" + (char) i);
+        }
+
         RvGeneralAdapter adapter=new RvGeneralAdapter(data);
         mRecyclerView.setAdapter(adapter);
     }
