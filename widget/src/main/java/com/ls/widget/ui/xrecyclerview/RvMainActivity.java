@@ -35,6 +35,9 @@ public class RvMainActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_grid_all:
                 startActivity(new Intent(this,RvGridAllActivity.class));
                 break;
+            case R.id.btn_item_line:
+                startActivity(new Intent(this,RvItemLineActivity.class));
+                break;
             default:
                 break;
         }

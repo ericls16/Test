@@ -36,4 +36,12 @@
         android:onClick="onClick"
         android:text="grid_divider_all"/>
 
+    <Button
+        android:id="@+id/btn_item_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:onClick="onClick"
+        android:text="grid_divider_all"/>
+
 </LinearLayout>

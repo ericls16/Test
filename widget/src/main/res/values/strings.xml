@@ -6,6 +6,7 @@
     <string name="rv_list_all">rv_list_all</string>
     <string name="rv_grid">rv_grid</string>
     <string name="rv_grid_all">rv_grid_all</string>
+    <string name="rv_item_line">rv_item_line</string>
 
     <!--switch-->
     <string name="switch_test">switch_test</string>

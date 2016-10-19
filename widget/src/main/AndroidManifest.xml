@@ -49,6 +49,12 @@
             android:label="@string/rv_grid_all"
             android:configChanges="keyboardHidden|orientation|screenSize">>
         </activity>
+        <activity
+            android:name=".ui.xrecyclerview.RvItemLineActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/rv_item_line"
+            android:configChanges="keyboardHidden|orientation|screenSize">>
+        </activity>
         <!--Switch-->
         <activity
             android:name=".ui.xswitch.SwitchTestActivity"
