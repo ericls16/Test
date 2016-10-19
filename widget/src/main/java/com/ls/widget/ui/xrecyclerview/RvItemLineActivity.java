@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.ls.widget.R;
 import com.ls.widget.adapter.RvGeneralAdapter;
+import com.ls.widget.widget.decoration.DividerGridAllDecoration;
 import com.ls.widget.widget.decoration.DividerListAllDecoration;
 
 import java.util.ArrayList;
@@ -37,9 +39,9 @@ public class RvItemLineActivity extends AppCompatActivity {
         mListRecyclerView.addItemDecoration(new DividerListAllDecoration(this));
         //-------------------------------
         mGridRecyclerView = (RecyclerView) findViewById(R.id.grid);
-        mGridRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mGridRecyclerView.setLayoutManager(new GridLayoutManager(this,4));
         mGridRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mGridRecyclerView.addItemDecoration(new DividerListAllDecoration(this));
+        mGridRecyclerView.addItemDecoration(new DividerGridAllDecoration(this));
     }
 
     private void initData() {
