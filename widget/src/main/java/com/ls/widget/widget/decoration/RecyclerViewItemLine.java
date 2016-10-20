@@ -31,13 +31,6 @@ public class RecyclerViewItemLine extends RecyclerView.ItemDecoration {
     private Drawable mDivider;
     private int mDividerType;
 
-    public RecyclerViewItemLine(Context context) {
-        final TypedArray a = context.obtainStyledAttributes(ATTRS);
-        mDivider = a.getDrawable(0);
-        a.recycle();
-        mDividerType=LIST;
-    }
-
     public RecyclerViewItemLine(Context context,int dividerType) {
         final TypedArray a = context.obtainStyledAttributes(ATTRS);
         mDivider = a.getDrawable(0);
