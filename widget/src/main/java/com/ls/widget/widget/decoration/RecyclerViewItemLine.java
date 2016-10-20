@@ -74,17 +74,12 @@ public class RecyclerViewItemLine extends RecyclerView.ItemDecoration {
         }else if(mDividerType==GRID) {
             int itemPosition = parent.getChildAdapterPosition(view);
             int spanCount = getSpanCount(parent);
-            int childCount = parent.getAdapter().getItemCount();
-            if (isLastRaw(parent, itemPosition, spanCount, childCount)) {
-                // 如果是最后一行，则不需要绘制底部
-                outRect.set(0, 0, mDivider.getIntrinsicWidth(), 0);
-            } else if (isLastColum(parent, itemPosition, spanCount, childCount)) {
+            if ((itemPosition+1)%spanCount==0) {
                 // 如果是最后一列，则不需要绘制右边
                 outRect.set(0, 0, 0, mDivider.getIntrinsicHeight());
             } else {
                 outRect.set(0, 0, mDivider.getIntrinsicWidth(), mDivider.getIntrinsicHeight());
             }
-
         }else if(mDividerType==GRID_VERTICAL_ALL) {
 
         }else if(mDividerType==GRID_ALL) {
@@ -92,6 +87,11 @@ public class RecyclerViewItemLine extends RecyclerView.ItemDecoration {
         }
     }
 
+    /**
+     * 画水平分割线
+     * @param c
+     * @param parent
+     */
     public void drawVertical(Canvas c, RecyclerView parent) {
         final int left = parent.getPaddingLeft();
         final int right = parent.getWidth() - parent.getPaddingRight();
@@ -131,6 +131,11 @@ public class RecyclerViewItemLine extends RecyclerView.ItemDecoration {
         }
     }
 
+    /**
+     * 画竖直分割线
+     * @param c
+     * @param parent
+     */
     public void drawHorizontal(Canvas c, RecyclerView parent) {
         final int top = parent.getPaddingTop();
         final int bottom = parent.getHeight() - parent.getPaddingBottom();
@@ -156,73 +161,26 @@ public class RecyclerViewItemLine extends RecyclerView.ItemDecoration {
             }
 
             if(mDividerType==GRID){
-                final int top2 = child.getTop() - params.topMargin;
-                final int bottom2 = child.getBottom() + params.bottomMargin;
-                //右侧垂直分割线
-                left = child.getRight()+params.rightMargin;
-                right = left+mDivider.getIntrinsicWidth();
-                mDivider.setBounds(left, top2, right, bottom2);
-                mDivider.draw(c);
+               if((i+1)%getSpanCount(parent)!=0) {
+                    final int top2 = child.getTop() - params.topMargin;
+                    final int bottom2 = child.getBottom() + params.bottomMargin;
+                    //右侧垂直分割线
+                    left = child.getRight() + params.rightMargin;
+                    right = left + mDivider.getIntrinsicWidth();
+                    mDivider.setBounds(left, top2, right, bottom2);
+                    mDivider.draw(c);
+                }
             }
 
         }
     }
 
-    private boolean isLastColum(RecyclerView parent, int pos, int spanCount, int childCount) {
-        RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
-        if (layoutManager instanceof GridLayoutManager) {
-            // 如果是最后一列，则不需要绘制右边
-            if ((pos + 1) % spanCount == 0) {
-                return true;
-            }
-        } else if (layoutManager instanceof StaggeredGridLayoutManager) {
-            int orientation = ((StaggeredGridLayoutManager) layoutManager).getOrientation();
-            if (orientation == StaggeredGridLayoutManager.VERTICAL) {
-                // 如果是最后一列，则不需要绘制右边
-                if ((pos + 1) % spanCount == 0) {
-                    return true;
-                }
-            } else {
-                childCount = childCount - childCount % spanCount;
-                // 如果是最后一列，则不需要绘制右边
-                if (pos >= childCount) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private boolean isLastRaw(RecyclerView parent, int pos, int spanCount, int childCount) {
-        RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
-        if (layoutManager instanceof GridLayoutManager) {
-            childCount = childCount - childCount % spanCount;
-            // 如果是最后一行，则不需要绘制底部
-            if (pos >= childCount) {
-                return true;
-            }
-        } else if (layoutManager instanceof StaggeredGridLayoutManager) {
-            int orientation = ((StaggeredGridLayoutManager) layoutManager).getOrientation();
-            // StaggeredGridLayoutManager 且纵向滚动
-            if (orientation == StaggeredGridLayoutManager.VERTICAL) {
-                childCount = childCount - childCount % spanCount;
-                // 如果是最后一行，则不需要绘制底部
-                if (pos >= childCount) {
-                    return true;
-                }
-            } else {
-                // StaggeredGridLayoutManager 且横向滚动
-                // 如果是最后一行，则不需要绘制底部
-                if ((pos + 1) % spanCount == 0) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
+    /**
+     * 计算列数
+     * @param parent
+     * @return
+     */
     private int getSpanCount(RecyclerView parent) {
-        // 列数
         int spanCount = -1;
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
