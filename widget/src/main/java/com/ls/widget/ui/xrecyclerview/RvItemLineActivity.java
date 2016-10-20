@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.ls.widget.R;
 import com.ls.widget.adapter.RvGeneralAdapter;
-import com.ls.widget.widget.decoration.DividerGridAllDecoration;
 import com.ls.widget.widget.decoration.RecyclerViewItemLine;
 
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ public class RvItemLineActivity extends AppCompatActivity {
         mGridRecyclerView = (RecyclerView) findViewById(R.id.grid);
         mGridRecyclerView.setLayoutManager(new GridLayoutManager(this,4));
         mGridRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mGridRecyclerView.addItemDecoration(new DividerGridAllDecoration(this));
+        mGridRecyclerView.addItemDecoration(new RecyclerViewItemLine(this,RecyclerViewItemLine.GRID));
     }
 
     private void initData() {

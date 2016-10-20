@@ -70,6 +70,7 @@ public class RvGridActivity extends AppCompatActivity {
         for (int i = 'A'; i < 'z'; i++) {
             data2.add("" + (char) i);
         }
+        data2.add("X");
         RvGeneralAdapter adapter2=new RvGeneralAdapter(data2);
         mRecyclerView.setAdapter(adapter2);
     }
