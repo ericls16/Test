@@ -11,7 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import com.ls.widget.R;
 import com.ls.widget.adapter.RvGeneralAdapter;
 import com.ls.widget.widget.decoration.DividerGridAllDecoration;
-import com.ls.widget.widget.decoration.DividerListAllDecoration;
+import com.ls.widget.widget.decoration.RecyclerViewItemLine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,9 @@ public class RvItemLineActivity extends AppCompatActivity {
         mListRecyclerView = (RecyclerView) findViewById(R.id.list);
         mListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mListRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mListRecyclerView.addItemDecoration(new DividerListAllDecoration(this));
+        mListRecyclerView.addItemDecoration(new RecyclerViewItemLine(this));
+//        mListRecyclerView.addItemDecoration(new RecyclerViewItemLine(this,RecyclerViewItemLine.LIST_VERTICAL_ALL));
+//        mListRecyclerView.addItemDecoration(new RecyclerViewItemLine(this,RecyclerViewItemLine.LIST_ALL));
         //-------------------------------
         mGridRecyclerView = (RecyclerView) findViewById(R.id.grid);
         mGridRecyclerView.setLayoutManager(new GridLayoutManager(this,4));

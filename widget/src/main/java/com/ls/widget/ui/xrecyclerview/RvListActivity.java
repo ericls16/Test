@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.ls.widget.R;
 import com.ls.widget.adapter.RvGeneralAdapter;
+import com.ls.widget.listener.ClickListener;
+import com.ls.widget.listener.RecyclerTouchListener;
 import com.ls.widget.widget.decoration.DividerListItemDecoration;
 
 import java.util.ArrayList;
@@ -49,17 +51,17 @@ public class RvListActivity extends AppCompatActivity {
 
     private void initListener() {
         //点击事件方法一：
-//        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mRecyclerView, new ClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//                Toast.makeText(RvListActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onLongClick(View view, int position) {
-//                Toast.makeText(RvListActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
-//            }
-//        }));
+        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, mRecyclerView, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Toast.makeText(RvListActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                Toast.makeText(RvListActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
+            }
+        }));
     }
 
     private void initData() {
@@ -70,18 +72,18 @@ public class RvListActivity extends AppCompatActivity {
         RvGeneralAdapter adapter=new RvGeneralAdapter(data);
 
         //点击事件方法二：
-        adapter.setOnItemClickListener(new RvGeneralAdapter.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(View view, int position) {
-                Toast.makeText(RvListActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onItemLongClick(View view, int position) {
-                Toast.makeText(RvListActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
-            }
-        });
+//        adapter.setOnItemClickListener(new RvGeneralAdapter.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                Toast.makeText(RvListActivity.this,"click->"+position,Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onItemLongClick(View view, int position) {
+//                Toast.makeText(RvListActivity.this,"longClick->"+position,Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         mRecyclerView.setAdapter(adapter);
     }
