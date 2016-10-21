@@ -88,17 +88,21 @@ public class RecyclerViewItemLine extends RecyclerView.ItemDecoration {
     }
 
     /**
-     * 画水平分割线
+     * 画横线分割线
      * @param c
      * @param parent
      */
     public void drawVertical(Canvas c, RecyclerView parent) {
+        //left和right固定，分别为itemView最左边和最右边.
         final int left = parent.getPaddingLeft();
         final int right = parent.getWidth() - parent.getPaddingRight();
-
+        //itemView的总数
         final int childCount = parent.getChildCount();
+        //遍历每个itemView，画垂直方向的横线分割线
         for (int i = 0; i < childCount; i++) {
+            //拿到itemView
             final View child = parent.getChildAt(i);
+            //拿到itemView的参数
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             int top = 0;
             int bottom = 0;
