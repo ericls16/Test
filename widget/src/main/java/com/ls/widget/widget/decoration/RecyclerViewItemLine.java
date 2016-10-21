@@ -115,21 +115,25 @@ public class RecyclerViewItemLine extends RecyclerView.ItemDecoration {
                 if (i == 0 && (mDividerType == LIST_VERTICAL_ALL || mDividerType == LIST_ALL)) {
                     /**
                      * 上方垂直分割线
-                     * # item最顶部分割线Y方向位置 = item上边界位置 - item的marginTop - 边界Y偏移量.
+                     * # item最顶部分割线Y方向位置 = item上边界位置-边界Y偏移量(偏移Y一般会加到parent的padding里).
+                     * # child.getTop()=item顶部边界距离parent顶部边界的相对位置=parent.getPaddingTop()+params.topMargin.
                      */
-                    top = child.getTop() + params.topMargin+Math.round(ViewCompat.getTranslationY(child));
+
+                    Log.e("PING","---"+parent.getPaddingTop());
+                    top = child.getTop()-Math.round(ViewCompat.getTranslationY(child));
+                    //分割线的底部位置(即分割线的高度)
                     bottom = top + mDivider.getIntrinsicHeight();
                     mDivider.setBounds(left, top, right, bottom);
                     mDivider.draw(c);
                 }
-
-                Log.e("PING","bottom="+child.getBottom());
 
                 //下方垂直分割线
                 /*bottom 就是 content 的下边界加上 paddingBottom，而为了不“吃掉” child view 的底部边距，
                 所以就加上 marginBottom，而 view 还能设置 translation 属性，用于 layout 完成之后的再次偏移，
                 同理，为了不“吃掉”这个偏移，所以也要加上 translationY
                  */
+
+
                 top = child.getBottom() + params.bottomMargin+Math.round(ViewCompat.getTranslationY(child));
                 bottom = top + mDivider.getIntrinsicHeight();
                 mDivider.setBounds(left, top, right, bottom);

@@ -35,8 +35,8 @@ public class RvItemLineActivity extends AppCompatActivity {
         mListRecyclerView = (RecyclerView) findViewById(R.id.list);
         mListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mListRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mListRecyclerView.addItemDecoration(new RecyclerViewItemLine(this,RecyclerViewItemLine.LIST));
-//        mListRecyclerView.addItemDecoration(new RecyclerViewItemLine(this,RecyclerViewItemLine.LIST_VERTICAL_ALL));
+//        mListRecyclerView.addItemDecoration(new RecyclerViewItemLine(this,RecyclerViewItemLine.LIST));
+        mListRecyclerView.addItemDecoration(new RecyclerViewItemLine(this,RecyclerViewItemLine.LIST_VERTICAL_ALL));
 //        mListRecyclerView.addItemDecoration(new RecyclerViewItemLine(this,RecyclerViewItemLine.LIST_ALL));
         //-------------------------------
         mGridRecyclerView = (RecyclerView) findViewById(R.id.grid);
