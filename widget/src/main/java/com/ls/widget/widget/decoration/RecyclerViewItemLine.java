@@ -5,9 +5,11 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -89,6 +91,7 @@ public class RecyclerViewItemLine extends RecyclerView.ItemDecoration {
 
     /**
      * 画横线分割线
+     * # item分割线:应该在parent的padding内,在item自己的margin外,取相交线.
      * @param c
      * @param parent
      */
@@ -110,15 +113,24 @@ public class RecyclerViewItemLine extends RecyclerView.ItemDecoration {
             if(mDividerType!=GRID) {
 
                 if (i == 0 && (mDividerType == LIST_VERTICAL_ALL || mDividerType == LIST_ALL)) {
-                    //上方垂直分割线
-                    top = child.getTop() + params.topMargin;
+                    /**
+                     * 上方垂直分割线
+                     * # item最顶部分割线Y方向位置 = item上边界位置 - item的marginTop - 边界Y偏移量.
+                     */
+                    top = child.getTop() + params.topMargin+Math.round(ViewCompat.getTranslationY(child));
                     bottom = top + mDivider.getIntrinsicHeight();
                     mDivider.setBounds(left, top, right, bottom);
                     mDivider.draw(c);
                 }
 
+                Log.e("PING","bottom="+child.getBottom());
+
                 //下方垂直分割线
-                top = child.getBottom() + params.bottomMargin;
+                /*bottom 就是 content 的下边界加上 paddingBottom，而为了不“吃掉” child view 的底部边距，
+                所以就加上 marginBottom，而 view 还能设置 translation 属性，用于 layout 完成之后的再次偏移，
+                同理，为了不“吃掉”这个偏移，所以也要加上 translationY
+                 */
+                top = child.getBottom() + params.bottomMargin+Math.round(ViewCompat.getTranslationY(child));
                 bottom = top + mDivider.getIntrinsicHeight();
                 mDivider.setBounds(left, top, right, bottom);
                 mDivider.draw(c);
