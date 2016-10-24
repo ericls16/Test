@@ -1,2 +1,3 @@
 //include ':okhttp', ':retrofit', ':databinding', ':widget', ':app', ':rxjava', ':volley'
-include ':widget'
+//include ':widget'
+include ':app'
