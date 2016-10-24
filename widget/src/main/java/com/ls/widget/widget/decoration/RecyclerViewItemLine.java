@@ -96,9 +96,11 @@ public class RecyclerViewItemLine extends RecyclerView.ItemDecoration {
      * @param parent
      */
     public void drawVertical(Canvas c, RecyclerView parent) {
-        //left和right固定，分别为itemView最左边和最右边.
-        final int left = parent.getPaddingLeft();
-        final int right = parent.getWidth() - parent.getPaddingRight();
+        int left =0;
+        int right=0;
+        int top =0;
+        int bottom=0;
+
         //itemView的总数
         final int childCount = parent.getChildCount();
         //遍历每个itemView，画垂直方向的横线分割线
@@ -107,45 +109,39 @@ public class RecyclerViewItemLine extends RecyclerView.ItemDecoration {
             final View child = parent.getChildAt(i);
             //拿到itemView的参数
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-            int top = 0;
-            int bottom = 0;
 
             if(mDividerType!=GRID) {
-
+                //left和right固定，分别为itemView最左边和最右边.
+                left = parent.getPaddingLeft();
+                right = parent.getWidth() - parent.getPaddingRight();
                 if (i == 0 && (mDividerType == LIST_VERTICAL_ALL || mDividerType == LIST_ALL)) {
                     /**
-                     * 上方垂直分割线
-                     * # item最顶部分割线Y方向位置 = item上边界位置-边界Y偏移量(偏移Y一般会加到parent的padding里).
+                     * 上方横线分割线
+                     * # item最顶部分割线Y方向位置 = item上边界位置+边界Y偏移量(偏移Y一般会加到parent的padding里).
                      * # child.getTop()=item顶部边界距离parent顶部边界的相对位置=parent.getPaddingTop()+params.topMargin.
                      */
-
                     Log.e("PING","---"+parent.getPaddingTop());
-                    top = child.getTop()-Math.round(ViewCompat.getTranslationY(child));
-                    //分割线的底部位置(即分割线的高度)
+                    top = child.getTop()+Math.round(ViewCompat.getTranslationY(child));
+                    //分割线的底部位置=item的底部位置+分割线的高度.
                     bottom = top + mDivider.getIntrinsicHeight();
                     mDivider.setBounds(left, top, right, bottom);
                     mDivider.draw(c);
                 }
 
-                //下方垂直分割线
-                /*bottom 就是 content 的下边界加上 paddingBottom，而为了不“吃掉” child view 的底部边距，
-                所以就加上 marginBottom，而 view 还能设置 translation 属性，用于 layout 完成之后的再次偏移，
-                同理，为了不“吃掉”这个偏移，所以也要加上 translationY
-                 */
-
-
-                top = child.getBottom() + params.bottomMargin+Math.round(ViewCompat.getTranslationY(child));
+                //item下方横线分割线
+                top = child.getBottom()+Math.round(ViewCompat.getTranslationY(child));
                 bottom = top + mDivider.getIntrinsicHeight();
                 mDivider.setBounds(left, top, right, bottom);
                 mDivider.draw(c);
             }
 
             if(mDividerType==GRID){
-                final int left2 = child.getLeft() - params.leftMargin;
-                final int right2 = child.getRight() + params.rightMargin + mDivider.getIntrinsicWidth();
-                top = child.getBottom() + params.bottomMargin;
+                left = child.getLeft()+Math.round(ViewCompat.getTranslationX(child)) ;
+                right = child.getRight()+mDivider.getIntrinsicWidth();
+
+                top = child.getBottom() + Math.round(ViewCompat.getTranslationX(child)) ;
                 bottom = top + mDivider.getIntrinsicHeight();
-                mDivider.setBounds(left2, top, right2, bottom);
+                mDivider.setBounds(left, top, right, bottom);
                 mDivider.draw(c);
             }
         }
