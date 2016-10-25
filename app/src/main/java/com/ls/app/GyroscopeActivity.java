@@ -60,6 +60,16 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
                 Log.i(TAG, "\n pitch " + Y_longitudinal);
                 Log.i(TAG, "\n roll " + Z_vertical);
             }
+
+//            if (timestamp != 0)
+//            {
+//                // event.timesamp表示当前的时间，单位是纳秒（1百万分之一毫秒）
+//                final float dT = (event.timestamp - timestamp) * NS2S;
+//                angle[0] += event.values[0] * dT;
+//                angle[1] += event.values[1] * dT;
+//                angle[2] += event.values[2] * dT;
+//            }
+//            timestamp = event.timestamp;
         }
 
         @Override
