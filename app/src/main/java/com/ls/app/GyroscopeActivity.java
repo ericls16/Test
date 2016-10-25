@@ -30,7 +30,8 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
         //创建一个SensorManager来获取系统的传感器服务
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         //选取加速度感应器
-        int sensorType = Sensor.TYPE_ACCELEROMETER;
+//        int sensorType = Sensor.TYPE_ACCELEROMETER;
+        int sensorType = Sensor.TYPE_GYROSCOPE;
         /*
          * 最常用的一个方法 注册事件
          * 参数1 ：SensorEventListener监听器
