@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.record_pwd:
-                startActivity(new Intent(this,GuideActivity.class));
+                startActivity(new Intent(this,GyroscopeActivity.class));
                 break;
             default:
                 break;
