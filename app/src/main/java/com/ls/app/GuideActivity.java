@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 引导页动画
  * Created by VIC1 on 2016/10/24.
  */
 
