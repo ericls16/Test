@@ -18,70 +18,57 @@ import android.view.View;
 
 public class GyroscopeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    //设置LOG标签
-    private static final String TAG = "sensor";
-    private SensorManager sm;
+    private SensorManager sensorManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gyroscope);
         initData();
-        //创建一个SensorManager来获取系统的传感器服务
-        sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        //传感器管理
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        //选取加速度感应器
-//        int sensorType = Sensor.TYPE_ACCELEROMETER;
-        int sensorType = Sensor.TYPE_GYROSCOPE;
-        /*
-         * 最常用的一个方法 注册事件
-         * 参数1 ：SensorEventListener监听器
-         * 参数2 ：Sensor 一个服务可能有多个Sensor实现，此处调用getDefaultSensor获取默认的Sensor
-         * 参数3 ：模式 可选数据变化的刷新频率
-         */
-        sm.registerListener(myAccelerometerListener, sm.getDefaultSensor(sensorType), SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     /**
-     * SensorEventListener接口的实现，需要实现两个方法
-     * 方法1 onSensorChanged 当数据变化的时候被触发调用
-     * 方法2 onAccuracyChanged 当获得数据的精度发生变化的时候被调用，比如突然无法获得数据时
+     * sensorListener
      */
-    final SensorEventListener myAccelerometerListener = new SensorEventListener() {
+    final SensorEventListener sensorListener = new SensorEventListener() {
 
         @Override
         public void onSensorChanged(SensorEvent event) {
             if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-                Log.i(TAG, "onSensorChanged");
-                //图解中已经解释三个值的含义
-                float X_lateral = event.values[0];
-                float Y_longitudinal = event.values[1];
-                float Z_vertical = event.values[2];
-                Log.i(TAG, "\n heading " + X_lateral);
-                Log.i(TAG, "\n pitch " + Y_longitudinal);
-                Log.i(TAG, "\n roll " + Z_vertical);
+                Log.i("ACCELEROMETER", "onSensorChanged");
+                float x = event.values[0];
+                float y = event.values[1];
+                float z = event.values[2];
+                Log.i("ACCELEROMETER", "x=" + x);
+                Log.i("ACCELEROMETER", "y=" + y);
+                Log.i("ACCELEROMETER", "z=" + z);
             }
 
             if (event.sensor.getType() == Sensor.TYPE_GYROSCOPE) {
-                Log.i(TAG, "onSensorChanged");
-                //图解中已经解释三个值的含义
-                float X_lateral = event.values[0];
-                float Y_longitudinal = event.values[1];
-                float Z_vertical = event.values[2];
-                Log.i(TAG, "\n heading " + X_lateral);
-                Log.i(TAG, "\n pitch " + Y_longitudinal);
-                Log.i(TAG, "\n roll " + Z_vertical);
+                Log.i("GYROSCOPE", "onSensorChanged");
+                float x = event.values[0];
+                float y = event.values[1];
+                float z = event.values[2];
+                Log.i("GYROSCOPE", "x=" + x);
+                Log.i("GYROSCOPE", "y=" + y);
+                Log.i("GYROSCOPE", "z=" + z);
             }
 
         }
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
-            Log.i(TAG, "onAccuracyChanged");
+            //精度发生变化
+            Log.i("ACCURACY", "onAccuracyChanged");
         }
     };
 
@@ -106,6 +93,6 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onPause() {
         super.onPause();
-        sm.unregisterListener(myAccelerometerListener);
+        sensorManager.unregisterListener(sensorListener);
     }
 }
