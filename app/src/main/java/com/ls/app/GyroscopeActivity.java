@@ -29,6 +29,11 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
         initData();
         //创建一个SensorManager来获取系统的传感器服务
         sm = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         //选取加速度感应器
 //        int sensorType = Sensor.TYPE_ACCELEROMETER;
         int sensorType = Sensor.TYPE_GYROSCOPE;
@@ -61,15 +66,17 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
                 Log.i(TAG, "\n roll " + Z_vertical);
             }
 
-//            if (timestamp != 0)
-//            {
-//                // event.timesamp表示当前的时间，单位是纳秒（1百万分之一毫秒）
-//                final float dT = (event.timestamp - timestamp) * NS2S;
-//                angle[0] += event.values[0] * dT;
-//                angle[1] += event.values[1] * dT;
-//                angle[2] += event.values[2] * dT;
-//            }
-//            timestamp = event.timestamp;
+            if (event.sensor.getType() == Sensor.TYPE_GYROSCOPE) {
+                Log.i(TAG, "onSensorChanged");
+                //图解中已经解释三个值的含义
+                float X_lateral = event.values[0];
+                float Y_longitudinal = event.values[1];
+                float Z_vertical = event.values[2];
+                Log.i(TAG, "\n heading " + X_lateral);
+                Log.i(TAG, "\n pitch " + Y_longitudinal);
+                Log.i(TAG, "\n roll " + Z_vertical);
+            }
+
         }
 
         @Override
@@ -98,7 +105,7 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
      */
     @Override
     protected void onPause() {
-        sm.unregisterListener(myAccelerometerListener);
         super.onPause();
+        sm.unregisterListener(myAccelerometerListener);
     }
 }
