@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * 陀螺仪
@@ -18,12 +19,14 @@ import android.view.View;
 
 public class GyroscopeActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private TextView txtResult;
     private SensorManager sensorManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gyroscope);
+        txtResult= (TextView) findViewById(R.id.txt_result);
         initData();
         //传感器管理
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -32,7 +35,7 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onResume() {
         super.onResume();
-        sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), SensorManager.SENSOR_DELAY_NORMAL);
+//        sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), SensorManager.SENSOR_DELAY_NORMAL);
         sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
@@ -48,21 +51,10 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
                 float x = event.values[0];
                 float y = event.values[1];
                 float z = event.values[2];
-                Log.i("ACCELEROMETER", "x=" + x);
-                Log.i("ACCELEROMETER", "y=" + y);
-                Log.i("ACCELEROMETER", "z=" + z);
+                Log.i("GYROSCOPE", "X方向加速度为：" + x);
+                Log.i("GYROSCOPE", "y方向加速度为：" + y);
+                Log.i("GYROSCOPE", "z方向加速度为：" + z);
             }
-
-            if (event.sensor.getType() == Sensor.TYPE_GYROSCOPE) {
-                Log.i("GYROSCOPE", "onSensorChanged");
-                float x = event.values[0];
-                float y = event.values[1];
-                float z = event.values[2];
-                Log.i("GYROSCOPE", "x=" + x);
-                Log.i("GYROSCOPE", "y=" + y);
-                Log.i("GYROSCOPE", "z=" + z);
-            }
-
         }
 
         @Override
