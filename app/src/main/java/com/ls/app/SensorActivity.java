@@ -17,7 +17,7 @@ import android.widget.TextView;
  * Created by VIC1 on 2016/10/25.
  */
 
-public class GyroscopeActivity extends AppCompatActivity implements View.OnClickListener {
+public class SensorActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView txtResult;
     private SensorManager sensorManager;
