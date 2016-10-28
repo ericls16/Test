@@ -22,6 +22,21 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
     private TextView txtResult;
     private SensorManager sensorManager;
 
+    private long t1=0;
+
+    //上一次的加速度
+    private float lastXa=0f;
+    private float lastYa=0f;
+    private float lastZa=0f;
+    //上一次的速度
+    private float vX=0f;
+    private float vY=0f;
+    private float vZ=0f;
+    //上一次的距离
+    private double dX;
+    private double dY;
+    private double dZ;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +51,7 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
     protected void onResume() {
         super.onResume();
 //        sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE), SensorManager.SENSOR_DELAY_NORMAL);
-        sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+//        sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     /**
@@ -46,21 +61,57 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
 
         @Override
         public void onSensorChanged(SensorEvent event) {
-            if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-                Log.i("ACCELEROMETER", "onSensorChanged");
+            if (event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
+                Log.i("TAG", "onSensorChanged");
                 float x = event.values[0];
                 float y = event.values[1];
                 float z = event.values[2];
-                Log.i("GYROSCOPE", "X方向加速度为：" + x);
-                Log.i("GYROSCOPE", "y方向加速度为：" + y);
-                Log.i("GYROSCOPE", "z方向加速度为：" + z);
+                Log.i("TAG", "X方向加速度为：" + x);
+                Log.i("TAG", "y方向加速度为：" + y);
+                Log.i("TAG", "z方向加速度为：" + z);
+
+                if(Math.abs(x) < 0.1f) {
+                    x = 0.0f;
+                }
+                if(Math.abs(y) < 0.1f) {
+                    y = 0.0f;
+                }
+                if(Math.abs(z) < 0.1f) {
+                    z = 0.0f;
+                }
+
+                long t2=System.currentTimeMillis();
+                double interval= (double)(t2-t1)/1000;
+
+                vX+= (double) (x+lastXa)/2.0f*interval;
+                vY+= (double) (y+lastYa)/2.0f*interval;
+                vZ+= (double) (z+lastZa)/2.0f*interval;
+
+                dX+=vX*interval;
+                dY+=vY*interval;
+                dZ+=vZ*interval;
+
+                double s= Math.sqrt(dX*dX+dY*dY+dZ*dZ);
+
+                Log.i("TAG", "vx="+vX+",vy="+vY+",vz="+vZ);
+                Log.i("TAG", "dx="+dX+",dy="+dY+",dz="+dZ);
+                Log.i("TAG", "时间间隔"+interval);
+                Log.i("TAG", "行走距离：" + s);
+                txtResult.setText("dx="+dX+"\ndy="+dY+"\ndz="+dZ+"\n路程="+s);
+
+                lastXa=x;
+                lastYa=y;
+                lastZa=z;
+                t1=t2;
+                Log.i("TAG", "--------------------------");
+
             }
         }
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
             //精度发生变化
-            Log.i("ACCURACY", "onAccuracyChanged");
+            Log.i("TAG", "onAccuracyChanged");
         }
     };
 
@@ -74,6 +125,8 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_start:
+                sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION), SensorManager.SENSOR_DELAY_NORMAL);
+                t1=System.currentTimeMillis();
                 break;
         }
     }
