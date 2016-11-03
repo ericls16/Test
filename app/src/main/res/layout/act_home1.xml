@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/contain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/layer_rg_bg"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/bottom_padding"
+            android:paddingTop="@dimen/top_padding">
+
+            <RadioButton
+                android:id="@+id/btn1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/space"
+                android:gravity="center_horizontal"
+                android:onClick="onClick"
+                android:text="1"
+                android:textColor="@color/font_default"
+                android:textSize="@dimen/font_default" />
+
+            <RadioButton
+                android:id="@+id/btn2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/space"
+                android:gravity="center_horizontal"
+                android:onClick="onClick"
+                android:text="2"
+                android:textColor="@color/font_default"
+                android:textSize="@dimen/font_default" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:id="@+id/btn3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/space"
+                android:gravity="center_horizontal"
+                android:onClick="onClick"
+                android:text="3"
+                android:textColor="@color/font_default"
+                android:textSize="@dimen/font_default" />
+
+            <RadioButton
+                android:id="@+id/btn4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/space"
+                android:gravity="center_horizontal"
+                android:onClick="onClick"
+                android:text="4"
+                android:textColor="@color/font_default"
+                android:textSize="@dimen/font_default" />
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="26dp"
+            android:contentDescription=""
+            android:onClick="onClick"
+            android:src="@drawable/space_big" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.ls.app.MainActivity">
+    tools:context="com.ls.app.ui.activity.MainActivity">
 
     <Button
         android:id="@+id/record_pwd"

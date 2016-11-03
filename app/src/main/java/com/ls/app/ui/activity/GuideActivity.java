@@ -1,4 +1,4 @@
-package com.ls.app;
+package com.ls.app.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.ls.app.R;
 
 import java.util.ArrayList;
 import java.util.List;

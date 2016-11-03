@@ -1,9 +1,12 @@
-package com.ls.app;
+package com.ls.app.ui.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import com.ls.app.R;
+import com.ls.app.ui.activity.home.Home1Activity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -17,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.record_pwd:
-                startActivity(new Intent(this,CalcStepActivity.class));
+                startActivity(new Intent(this,Home1Activity.class));
                 break;
             default:
                 break;

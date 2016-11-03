@@ -1,4 +1,4 @@
-package com.ls.app;
+package com.ls.app.ui.activity;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.ls.app.R;
 
 /**
  * 陀螺仪

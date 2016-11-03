@@ -1,4 +1,4 @@
-package com.ls.app;
+package com.ls.app.ui.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,6 +11,8 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.ls.app.R;
 
 /**
  * Created by VIC1 on 2016/10/28.
