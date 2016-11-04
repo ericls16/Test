@@ -2,6 +2,7 @@ var World = {
 	tracker: null,
 
 	init: function initFn() {
+	    AR.context.setCloudRecognitionServerRegion(AR.CONST.CLOUD_RECOGNITION_SERVER_REGION.CHINA);
 		this.createTracker();
 		this.createOverlays();
 	},
@@ -20,16 +21,23 @@ var World = {
 			onError: this.trackerError
 		});*/
 
-        /*ls*/
-//		World.tracker = new AR.CloudTracker("3fb7b0ab727dc7944930ee4d8f75ecac", "580f204570f4a3df103ebb30", {
-//        	onLoaded: this.trackerLoaded,
-//        	onError: this.trackerError
-//        });
+        /*ls-Europe*/
+		/*World.tracker = new AR.CloudTracker("3fb7b0ab727dc7944930ee4d8f75ecac", "580f204570f4a3df103ebb30", {
+        	onLoaded: this.trackerLoaded,
+        	onError: this.trackerError
+        });*/
 
-        World.tracker = new AR.CloudTracker("e07035f954f6eb49e04eebf6f123cb03", "581acf15585f52922c964180", {
+        /*ls-China*/
+        World.tracker = new AR.CloudTracker("1eaaa2bcb2a053c161f91af5d22f10ae", "581c06d5d3115fe52f82b74f", {
+             onLoaded: this.trackerLoaded,
+             onError: this.trackerError
+        });
+
+        /*hjn*/
+       /* World.tracker = new AR.CloudTracker("e07035f954f6eb49e04eebf6f123cb03", "581acf15585f52922c964180", {
                 	onLoaded: this.trackerLoaded,
                 	onError: this.trackerError
-        });
+        });*/
 	},
 
 	startContinuousRecognition: function startContinuousRecognitionFn(interval) {
@@ -125,7 +133,7 @@ var World = {
 	},
 
 	trackerLoaded: function trackerLoadedFn() {
-		World.startContinuousRecognition(750);
+		World.startContinuousRecognition(60000);
 		World.showUserInstructions();
 	},
 
@@ -149,6 +157,8 @@ var World = {
 			e.parentElement.removeChild(e);
 		}, 10000);			
 	}
+
+
 };
 
 World.init();
