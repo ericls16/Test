@@ -14,10 +14,22 @@ var World = {
 		function trackerError() is called instead.
 	*/
 	createTracker: function createTrackerFn() {
-		World.tracker = new AR.CloudTracker("b277eeadc6183ab57a83b07682b3ceba", "54e4b9fe6134bb74351b2aa3", {
+
+/*		World.tracker = new AR.CloudTracker("b277eeadc6183ab57a83b07682b3ceba", "54e4b9fe6134bb74351b2aa3", {
 			onLoaded: this.trackerLoaded,
 			onError: this.trackerError
-		});
+		});*/
+
+        /*ls*/
+//		World.tracker = new AR.CloudTracker("3fb7b0ab727dc7944930ee4d8f75ecac", "580f204570f4a3df103ebb30", {
+//        	onLoaded: this.trackerLoaded,
+//        	onError: this.trackerError
+//        });
+
+        World.tracker = new AR.CloudTracker("e07035f954f6eb49e04eebf6f123cb03", "581acf15585f52922c964180", {
+                	onLoaded: this.trackerLoaded,
+                	onError: this.trackerError
+        });
 	},
 
 	startContinuousRecognition: function startContinuousRecognitionFn(interval) {
@@ -58,6 +70,8 @@ var World = {
 	*/
 	onRecognition: function onRecognitionFn(recognized, response) {
 		if (recognized) {
+
+		    /*alert("xxxxxxxxxxxxxxxxxxxxxxx");*/
 			/*
 				Clean Resources from previous recognitions.
 			*/

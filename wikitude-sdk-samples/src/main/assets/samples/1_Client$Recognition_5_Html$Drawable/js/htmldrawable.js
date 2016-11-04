@@ -63,9 +63,12 @@ var World = {
 		*/
 		var weatherWidget = new AR.HtmlDrawable({
 			uri: "assets/weather.html"
+//            uri: "https://www.baidu.com/"
+//            uri: "assets/clock.html"
+
 		}, 0.25, {
-			viewportWidth: 320,
-			viewportHeight: 100,
+			viewportWidth: 1000,
+			viewportHeight: 1000,
 			backgroundColor: "#FFFFFF",
 			offsetX: +0.36,
 			offsetY: 0.5,

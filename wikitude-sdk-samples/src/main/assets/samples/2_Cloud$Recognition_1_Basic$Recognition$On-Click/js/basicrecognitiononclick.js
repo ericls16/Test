@@ -18,6 +18,12 @@ var World = {
 			onLoaded: this.trackerLoaded,
 			onError: this.trackerError
 		});
+
+		/*ls*/
+       /* World.tracker = new AR.CloudTracker("3fb7b0ab727dc7944930ee4d8f75ecac", "580f204570f4a3df103ebb30", {
+             onLoaded: this.trackerLoaded,
+             onError: this.trackerError
+        });*/
 	},
 
 	/*
