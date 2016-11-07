@@ -19,6 +19,11 @@ public class FaceDetectionPluginActivity extends SampleCamActivity {
 
     private File _cascadeFile;
     private StrokedRectangle rectangle = new StrokedRectangle(StrokedRectangle.Type.FACE);
+    private int _defaultOrientation;
+
+    private final Object _projectionMatrixLock = new Object();
+    private boolean _projectionMatrixUpdateRequired = false;
+    private float[] _projectionMatrix = new float[16];
 
     @Override
     protected void onPostCreate(final Bundle savedInstanceState) {
@@ -47,42 +52,19 @@ public class FaceDetectionPluginActivity extends SampleCamActivity {
             e.printStackTrace();
         }
 
-        setInterfaceOrientationInPlugin();
-    }
-
-    private void setInterfaceOrientationInPlugin() {
-        Display display = ((WindowManager)
-                getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-        int screenOrientation = display.getRotation();
-
-        switch (screenOrientation) {
-            case Surface.ROTATION_0: // Portrait
-                setFlipFlag(1);
-                break;
-            case Surface.ROTATION_90: // Landscape right
-                setFlipFlag(999);
-                break;
-            case Surface.ROTATION_180: // Portrait upside down
-                setFlipFlag(0);
-                break;
-            case Surface.ROTATION_270: // Landscape left
-                setFlipFlag(-1);
-                break;
+        evaluateDeviceDefaultOrientation();
+        if (_defaultOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setIsBaseOrientationLandscape(true);
         }
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        setInterfaceOrientationInPlugin();
-    }
-
-    @Override
     protected void onResume() {
+
         super.onResume();
         if (rectangle == null) {
+
             rectangle = new StrokedRectangle(StrokedRectangle.Type.FACE);
-            setInterfaceOrientationInPlugin();
         }
     }
 
@@ -92,31 +74,59 @@ public class FaceDetectionPluginActivity extends SampleCamActivity {
         rectangle = null;
     }
 
+    public void evaluateDeviceDefaultOrientation() {
+        WindowManager windowManager =  (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        Configuration config = getResources().getConfiguration();
+
+        int rotation = windowManager.getDefaultDisplay().getRotation();
+
+        if ( ((rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180) &&
+                config.orientation == Configuration.ORIENTATION_LANDSCAPE)
+                || ((rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270) &&
+                config.orientation == Configuration.ORIENTATION_PORTRAIT)) {
+            _defaultOrientation = Configuration.ORIENTATION_LANDSCAPE;
+        } else {
+            _defaultOrientation = Configuration.ORIENTATION_PORTRAIT;
+        }
+    }
     public void onFaceDetected(float[] modelViewMatrix) {
         if (rectangle != null) {
+
             rectangle.setViewMatrix(modelViewMatrix);
         }
     }
 
     public void onFaceLost() {
+
         if (rectangle != null) {
+
             rectangle.onFaceLost();
         }
     }
 
     public void onProjectionMatrixChanged(float[] projectionMatrix) {
-        if (rectangle != null) {
-            rectangle.setProjectionMatrix(projectionMatrix);
+
+        synchronized (_projectionMatrixLock) {
+            _projectionMatrixUpdateRequired = true;
+            _projectionMatrix = projectionMatrix;
         }
     }
 
     public void renderDetectedFaceAugmentation() {
+
         if (rectangle != null) {
+
+            synchronized (_projectionMatrixLock) {
+                if (_projectionMatrixUpdateRequired) {
+                    rectangle.setProjectionMatrix(_projectionMatrix);
+                    _projectionMatrixUpdateRequired = false;
+                }
+            }
+
             rectangle.onDrawFrame();
         }
     }
 
     private native void initNative(String casecadeFilePath);
-    private native void setFlipFlag(int flag);
-
+    private native void setIsBaseOrientationLandscape(boolean isBaseOrientationLandscape_);
 }

@@ -1,4 +1,3 @@
 //include ':okhttp', ':retrofit', ':databinding', ':widget', ':app', ':rxjava', ':volley'
 //include ':widget'
-include ':app', ':wikitude-ar'
-include ':wikitude-sdk-samples'
+include ':app', ':wikitude-sdk-samples'

@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.StartupConfiguration;
 import com.wikitude.sdksamples.R;
+import com.wikitude.tools.device.features.MissingDeviceFeatures;
 
 
 /**
@@ -36,7 +37,7 @@ import com.wikitude.sdksamples.R;
  * It uses very basic ListAdapter for UI representation
  */
 public class MainActivity extends ListActivity{
-	
+
 	private Map<Integer, List<SampleMeta>> samples;
 
 	private Set<String> irSamples;
@@ -50,7 +51,7 @@ public class MainActivity extends ListActivity{
 		geoSamples = getListFrom("samples/samples_geo.lst");
 
 		this.setContentView( this.getContentViewId() );
-		
+
 		// ensure to clean cache when it is no longer required
 		MainActivity.deleteDirectoryContent ( ArchitectView.getCacheDirectoryAbsoluteFilePath(this) );
 
@@ -84,7 +85,7 @@ public class MainActivity extends ListActivity{
 	@Override
 	protected void onListItemClick( ListView l, View v, int position, long id ) {
 		super.onListItemClick( l, v, position, id );
-			
+
 			final Intent intent = new Intent( this, MainSamplesListActivity.class );
 
 			final List<SampleMeta> activitiesToLaunch = getActivitiesToLaunch(position);
@@ -92,15 +93,15 @@ public class MainActivity extends ListActivity{
 			String[] activityTitles = new String[activitiesToLaunch.size()];
 			String[] activityUrls = new String[activitiesToLaunch.size()];
 			String[] activityClasses = new String[activitiesToLaunch.size()];
-			
+
 			boolean[] activitiesIr = new boolean[activitiesToLaunch.size()];
 			boolean[] activitiesGeo = new boolean[activitiesToLaunch.size()];
-					
+
 			// check if AR.VideoDrawables are supported on the current device. if not -> show hint-Toast message
 			if (activitiesToLaunch.get(0).categoryName.contains("Video") && ! MainActivity.isVideoDrawablesSupported()) {
 				Toast.makeText(this, R.string.videosrawables_fallback, Toast.LENGTH_LONG).show();
 			}
-			
+
 			// find out which Activity to launch when sample row was pressed, some handle document.location = architectsdk:// events, others inject poi data from native via javascript
 			for (int i= 0; i< activitiesToLaunch.size(); i++) {
 				final SampleMeta meta = activitiesToLaunch.get(i);
@@ -118,26 +119,38 @@ public class MainActivity extends ListActivity{
 					activityClasses[i] = ("com.wikitude.samples.SamplePluginActivity");
                 } else if (meta.categoryId.equals("9") && meta.sampleId==2) {
                     activityClasses[i] = ("com.wikitude.samples.FaceDetectionPluginActivity");
+				} else if (meta.categoryId.equals("9") && meta.sampleId==3) {
+					activityClasses[i] = ("com.wikitude.samples.CustomCameraActivity");
+				} else if (meta.categoryId.equals("9") && meta.sampleId==4) {
+					activityClasses[i] = ("com.wikitude.samples.MarkerTrackingPluginActivity");
 				} else {
 					activityClasses[i] = ("com.wikitude.samples.SampleCamActivity");
 				}
 			}
-			
+
 			intent.putExtra(MainSamplesListActivity.EXTRAS_KEY_ACTIVITIES_ARCHITECT_WORLD_URLS_ARRAY, activityUrls);
 			intent.putExtra(MainSamplesListActivity.EXTRAS_KEY_ACTIVITIES_CLASSNAMES_ARRAY, activityClasses);
 			intent.putExtra(MainSamplesListActivity.EXTRAS_KEY_ACTIVITIES_TILES_ARRAY, activityTitles);
 			intent.putExtra(MainSamplesListActivity.EXTRAS_KEY_ACTIVITIES_IR_ARRAY, activitiesIr);
 			intent.putExtra(MainSamplesListActivity.EXTRAS_KEY_ACTIVITIES_GEO_ARRAY, activitiesGeo);
 			intent.putExtra(MainSamplesListActivity.EXTRAS_KEY_ACTIVITY_TITLE_STRING, activityTitle);
-			
+
 			/* launch activity */
 			this.startActivity( intent );
-			
+
 	}
 
 	protected final String[] getListLabels() {
 		boolean includeIR = (ArchitectView.getSupportedFeaturesForDevice(getApplicationContext()) & StartupConfiguration.Features.Tracking2D) != 0;
 		boolean includeGeo = (ArchitectView.getSupportedFeaturesForDevice(getApplicationContext()) & StartupConfiguration.Features.Geo) != 0;
+
+		MissingDeviceFeatures missingDeviceFeatures = ArchitectView.isDeviceSupported(this, StartupConfiguration.Features.Tracking2D | StartupConfiguration.Features.Geo);
+
+		if (missingDeviceFeatures.areFeaturesMissing()) {
+			Toast toast =  Toast.makeText(this, missingDeviceFeatures.getMissingFeatureMessage() +
+					"Because of this some samples may not be visible.", Toast.LENGTH_LONG);
+			toast.show();
+		}
 
 		samples = getActivitiesToLaunch(includeIR, includeGeo);
 		final String[] labels = new String[samples.keySet().size()];
@@ -146,11 +159,11 @@ public class MainActivity extends ListActivity{
 		}
 		return labels;
 	}
-	
+
 	protected int getContentViewId() {
 		return R.layout.list_startscreen;
 	}
-	
+
 	public void buttonClicked(final View view)
 	 {
 		try {
@@ -159,7 +172,7 @@ public class MainActivity extends ListActivity{
 			e.printStackTrace();
 		}
 	 }
-	
+
 	/**
 	 * deletes content of given directory
 	 * @param path
@@ -177,11 +190,11 @@ public class MainActivity extends ListActivity{
 			e.printStackTrace();
 		}
 	}
-	
+
 	private List<SampleMeta> getActivitiesToLaunch(final int position){
 		return samples.get(position);
 	}
-	
+
 	private Map<Integer, List<SampleMeta>> getActivitiesToLaunch(boolean includeIR, boolean includeGeo){
 		final Map<Integer, List<SampleMeta>> pos2activites = new HashMap<Integer, List<SampleMeta>>();
 
@@ -212,10 +225,10 @@ public class MainActivity extends ListActivity{
 					}
 				}
 			}
-		
+
 		return pos2activites;
-			
-		
+
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
@@ -223,11 +236,11 @@ public class MainActivity extends ListActivity{
 	}
 
 	private static class SampleMeta {
-		
+
 		final String path, categoryName, sampleName, categoryId;
 		final int sampleId;
 		final boolean hasGeo, hasIr;
-		
+
 		public SampleMeta(String path, boolean hasIr, boolean hasGeo) {
 			super();
 			this.path = path;
@@ -244,13 +257,13 @@ public class MainActivity extends ListActivity{
 			path = path.substring(path.indexOf("_")+1);
 			this.sampleName = path;
 		}
-		
+
 		@Override
 		public String toString() {
 			return "categoryId:" + this.categoryId + ", categoryName:" + this.categoryName + ", sampleId:" + this.sampleId +", sampleName: " + this.sampleName + ", path: " + this.path;
 		}
 	}
-	
+
 	/**
 	 * helper to check if video-drawables are supported by this device. recommended to check before launching ARchitect Worlds with videodrawables
 	 * @return true if AR.VideoDrawables are supported, false if fallback rendering would apply (= show video fullscreen)
@@ -265,6 +278,6 @@ public class MainActivity extends ListActivity{
 			return extensions != null && extensions.contains( "GL_OES_EGL_image_external" );
 		}
 	}
-	
+
 
 }
