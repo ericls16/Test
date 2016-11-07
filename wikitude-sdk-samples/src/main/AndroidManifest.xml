@@ -61,10 +61,13 @@
         <activity android:name="com.wikitude.samples.MainSamplesListActivity"/>
 
         <!-- poi detail screen -->
-        <activity android:name="com.wikitude.samples.SamplePoiDetailActivity"/>
+        <activity android:name="com.wikitude.samples.SamplePoiDetailActivity" />
 
         <!-- cam activities -->
-        <activity android:name="com.wikitude.samples.SampleCamActivity" android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity
+            android:name="com.wikitude.samples.SampleCamActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize">
+        </activity>
         <activity android:name="com.wikitude.samples.SampleCamContentFromNativeActivity" android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name="com.wikitude.samples.SampleFrontCamActivity" android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name="com.wikitude.samples.SamplePluginActivity" android:configChanges="orientation|keyboardHidden|screenSize"/>
@@ -88,6 +91,16 @@
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
+
+        <!--**************************************-->
+
+        <activity
+            android:name="com.wikitude.samples.TestActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize">
+            <intent-filter>
+                <data android:scheme="my.special.scheme" />
+            </intent-filter>
+        </activity>
 
     </application>
 
