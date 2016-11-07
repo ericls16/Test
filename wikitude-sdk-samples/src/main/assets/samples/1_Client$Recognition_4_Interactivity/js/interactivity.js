@@ -21,6 +21,7 @@ var World = {
 		/*
 			The button is created similar to the overlay feature. An AR.ImageResource defines the look of the button and is reused for both buttons.
 		*/
+
 		this.imgButton = new AR.ImageResource("assets/wwwButton.jpg");
 
 		/*
@@ -50,6 +51,7 @@ var World = {
 				cam: [overlayOne, pageOneButton]
 			}
 		});
+		//-------------------------------------------------------------------------------
 
 		/*
 			Similar to the first part, the image resource and the AR.ImageDrawable for the second overlay are created.
@@ -75,6 +77,7 @@ var World = {
 		});
 	},
 
+    //------------------------------------------------------------------------------
 	createWwwButton: function createWwwButtonFn(url, size, options) {
 		/*
 			As the button should be clickable the onClick trigger is defined in the options passed to the AR.ImageDrawable. In general each drawable can be made clickable by defining its onClick trigger. The function assigned to the click trigger calls AR.context.openInBrowser with the specified URL, which opens the URL in the browser.

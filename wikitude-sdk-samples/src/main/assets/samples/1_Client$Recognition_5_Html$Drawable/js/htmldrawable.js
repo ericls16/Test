@@ -63,19 +63,30 @@ var World = {
 		*/
 		var weatherWidget = new AR.HtmlDrawable({
 			uri: "assets/weather.html"
+//            uri: "https://www.baidu.com"
 		}, 0.25, {
-			viewportWidth: 320,
-			viewportHeight: 100,
+			viewportWidth: 500,
+			viewportHeight: 1000,
 			backgroundColor: "#FFFFFF",
 			offsetX: +0.36,
 			offsetY: 0.5,
 			horizontalAnchor: AR.CONST.HORIZONTAL_ANCHOR.RIGHT,
 			verticalAnchor: AR.CONST.VERTICAL_ANCHOR.TOP,
 			clickThroughEnabled: true,
+			/*true:超链接会直接跳转；false：不响应超链接，但是用户仍可以使用onDocumentLocationChanged触发器对点击过的链接进行回应*/
 			allowDocumentLocationChanges: false,
+			/*对超链接的响应事件*/
 			onDocumentLocationChanged: function onDocumentLocationChangedFn(uri) {
+			    /*在新的浏览器里打开*/
 				AR.context.openInBrowser(uri);
 			}
+			//-------------------
+//			,
+            /*点击HtmlDrawable响应事件*/
+//			onClick:function(){
+//                AR.context.openInBrowser("https://www.baidu.com");
+//			}
+
 		});
 
 		/*
@@ -111,6 +122,7 @@ var World = {
 		});
 	},
 
+//------------------------------------------------------------------
 	createWwwButton: function createWwwButtonFn(url, size, options) {
 		/*
 			As the button should be clickable the onClick trigger is defined in the options passed to the AR.ImageDrawable. In general each drawable can be made clickable by defining its onClick trigger. The function assigned to the click trigger calls AR.context.openInBrowser with the specified URL, which opens the URL in the browser.
@@ -120,7 +132,7 @@ var World = {
 		};
 		return new AR.ImageDrawable(this.imgButton, size, options);
 	},
-
+//------------------------------------------------------------------
 	worldLoaded: function worldLoadedFn() {
 		var cssDivInstructions = " style='display: table-cell;vertical-align: middle; text-align: right; width: 50%; padding-right: 15px;'";
 		var cssDivSurfer = " style='display: table-cell;vertical-align: middle; text-align: left; padding-right: 15px; width: 38px'";
