@@ -78,7 +78,7 @@ var World = {
 			/*对超链接的响应事件*/
 			onDocumentLocationChanged: function onDocumentLocationChangedFn(uri) {
 			    /*在新的浏览器里打开*/
-				AR.context.openInBrowser(uri);
+				AR.context.openInBrowser(uri,false);
 			}
 			//-------------------
 //			,

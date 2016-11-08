@@ -35,9 +35,9 @@
 			android:normalScreens="true" android:anyDensity="true"
 			android:xlargeScreens="true" />
 
-    <uses-sdk
+    <!--<uses-sdk
         android:minSdkVersion="16"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="21" />-->
 
     <!-- set android:debuggable="false" or remove android:debuggable="true" to disable debugging for Android 4.4+
     In case of a compile-error you have to update "Project - Properties - Android Lint Preferences" - Security - HardcodedDebugMode (set "Severity" to "Warning")  -->
@@ -97,8 +97,12 @@
         <activity
             android:name="com.wikitude.samples.TestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
+
             <intent-filter>
-                <data android:scheme="my.special.scheme" />
+                <action android:name="android.intent.action.VIEW" /><!-- 显示数据 -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" /><!-- 定义成浏览器类型，有URL需要处理时会过滤 -->
+                <data android:scheme="myapp" android:host="test" android:path="/" /><!-- 打开以whatever协议的URL,这个自己随便定义。 -->
             </intent-filter>
         </activity>
 

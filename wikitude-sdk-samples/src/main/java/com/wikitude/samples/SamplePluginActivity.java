@@ -18,6 +18,7 @@ import com.wikitude.sdksamples.R;
 import java.io.File;
 import java.io.FileOutputStream;
 
+
 public class SamplePluginActivity extends AbstractArchitectCamActivity {
 
 	/**

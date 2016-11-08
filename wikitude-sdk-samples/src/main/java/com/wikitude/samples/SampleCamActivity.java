@@ -1,8 +1,5 @@
 package com.wikitude.samples;
 
-import java.io.File;
-import java.io.FileOutputStream;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -21,6 +18,9 @@ import com.wikitude.architect.ArchitectView.CaptureScreenCallback;
 import com.wikitude.architect.ArchitectView.SensorAccuracyChangeListener;
 import com.wikitude.architect.StartupConfiguration.CameraPosition;
 import com.wikitude.sdksamples.R;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class SampleCamActivity extends AbstractArchitectCamActivity {
 
@@ -83,7 +83,7 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 			@Override
 			public boolean urlWasInvoked(String uriString) {
 				Uri invokedUri = Uri.parse(uriString);
-				
+
 				// pressed "More" button on POI-detail panel
 				if ("markerselected".equalsIgnoreCase(invokedUri.getHost())) {
 					final Intent poiDetailIntent = new Intent(SampleCamActivity.this, SamplePoiDetailActivity.class);
@@ -190,4 +190,6 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
             }
         }
     }
+
+
 }
