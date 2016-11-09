@@ -1,6 +1,5 @@
 # Auto detect text files and perform LF normalization
-# * text=auto
-*.java linguist-language=java
+* text=auto
 
 # Custom for Visual Studio
 *.cs     diff=csharp
@@ -16,3 +15,7 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+
+*.java linguist-language=java
+*.js linguist-language=java
