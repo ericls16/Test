@@ -5,6 +5,10 @@ var World = {
 		this.createOverlays();
 	},
 
+	loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
+        alert("htmldrawable="+poiData);
+    },
+
 	createOverlays: function createOverlaysFn() {
 		/*
 			First an AR.ClientTracker needs to be created in order to start the recognition engine. It is initialized with a URL specific to the target collection. Optional parameters are passed as object in the last argument. In this case a callback function for the onLoaded trigger is set. Once the tracker is fully loaded the function worldLoaded() is called.
@@ -78,7 +82,10 @@ var World = {
 			/*对超链接的响应事件*/
 			onDocumentLocationChanged: function onDocumentLocationChangedFn(uri) {
 			    /*在新的浏览器里打开*/
-				AR.context.openInBrowser(uri,false);
+//				AR.context.openInBrowser(uri,false);
+//				var architectSdkUrl = "architectsdk://markerselected?id=" + encodeURIComponent("12") + "&title=" + encodeURIComponent("title") + "&description=" + encodeURIComponent("description");
+                var architectSdkUrl = "architectsdk://test?id=1001";
+                document.location = architectSdkUrl;
 			}
 			//-------------------
 //			,

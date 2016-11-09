@@ -7,9 +7,11 @@ import android.graphics.Bitmap;
 import android.hardware.SensorManager;
 import android.location.LocationListener;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.wikitude.architect.ArchitectView;
@@ -78,14 +80,15 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 
 	@Override
 	public ArchitectUrlListener getUrlListener() {
+		Log.i("CALL_NATIVE","SampleCamActivity->getUrlListener()");
 		return new ArchitectUrlListener() {
 
 			@Override
 			public boolean urlWasInvoked(String uriString) {
 				Uri invokedUri = Uri.parse(uriString);
-
 				// pressed "More" button on POI-detail panel
 				if ("markerselected".equalsIgnoreCase(invokedUri.getHost())) {
+					Log.i("CALL_NATIVE","SampleCamActivity->getUrlListener()->urlWasInvoked->markerselected");
 					final Intent poiDetailIntent = new Intent(SampleCamActivity.this, SamplePoiDetailActivity.class);
 					poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_ID, String.valueOf(invokedUri.getQueryParameter("id")) );
 					poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_TITILE, String.valueOf(invokedUri.getQueryParameter("title")) );
@@ -96,6 +99,7 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 				
 				// pressed snapshot button. check if host is button to fetch e.g. 'architectsdk://button?action=captureScreen', you may add more checks if more buttons are used inside AR scene
 				else if ("button".equalsIgnoreCase(invokedUri.getHost())) {
+					Log.i("CALL_NATIVE","SampleCamActivity->getUrlListener()->urlWasInvoked->button");
 					SampleCamActivity.this.architectView.captureScreen(ArchitectView.CaptureScreenCallback.CAPTURE_MODE_CAM_AND_WEBVIEW, new CaptureScreenCallback() {
 						
 						@Override
@@ -108,6 +112,15 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
                             }
 						}
 					});
+				}
+
+				//test
+				if ("test".equalsIgnoreCase(invokedUri.getHost())) {
+					Log.i("CALL_NATIVE","SampleCamActivity->getUrlListener()->urlWasInvoked->test");
+					String id=invokedUri.getQueryParameter("id");
+					String params="World.loadPoisFromJsonData" + "( " + id + " );";
+					architectView.callJavascript(params);
+					return true;
 				}
 				return true;
 			}
@@ -191,5 +204,16 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
         }
     }
 
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		Log.e("TEMP","SampleCamActivity->onCreate()");
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		Log.e("TEMP","SampleCamActivity->onPause()");
+	}
 
 }

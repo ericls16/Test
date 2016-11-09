@@ -2,6 +2,7 @@ package com.wikitude.samples;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.wikitude.sdksamples.R;
@@ -16,6 +17,8 @@ public class SamplePoiDetailActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.sample_poidetail);
+
+		Log.i("CALL_NATIVE","SamplePoiDetailActivity->onCreate()");
 		
 		((TextView)findViewById(R.id.poi_id)).setText(  getIntent().getExtras().getString(EXTRAS_KEY_POI_ID) );
 		((TextView)findViewById(R.id.poi_title)).setText( getIntent().getExtras().getString(EXTRAS_KEY_POI_TITILE) );

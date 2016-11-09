@@ -1,11 +1,5 @@
 package com.wikitude.samples;
 
-import java.io.IOException;
-import java.util.HashMap;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.pm.ApplicationInfo;
@@ -25,6 +19,12 @@ import com.wikitude.architect.ArchitectView.SensorAccuracyChangeListener;
 import com.wikitude.architect.StartupConfiguration;
 import com.wikitude.architect.StartupConfiguration.CameraPosition;
 import com.wikitude.sdksamples.R;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * Abstract activity which handles live-cycle events.
@@ -335,7 +335,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 							
 							@Override
 							public void run() {
-								Toast.makeText(AbstractArchitectCamActivity.this, R.string.location_fetching, Toast.LENGTH_SHORT).show();	
+								Toast.makeText(AbstractArchitectCamActivity.this, R.string.location_fetching, Toast.LENGTH_SHORT).show();
 							}
 						});
 			
@@ -365,6 +365,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 	 * @param arguments
 	 */
 	private void callJavaScript(final String methodName, final String[] arguments) {
+		Log.i("CALL_JS","callJavaScript");
 		final StringBuilder argumentsString = new StringBuilder("");
 		for (int i= 0; i<arguments.length; i++) {
 			argumentsString.append(arguments[i]);
@@ -375,6 +376,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		
 		if (this.architectView!=null) {
 			final String js = ( methodName + "( " + argumentsString.toString() + " );" );
+			Log.i("CALL_JS","callJavaScript="+js);
 			this.architectView.callJavascript(js);
 		}
 	}

@@ -1,7 +1,5 @@
 package com.wikitude.samples;
 
-import java.io.File;
-
 import android.Manifest;
 import android.app.ListActivity;
 import android.content.Intent;
@@ -9,12 +7,15 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.wikitude.sdksamples.R;
+
+import java.io.File;
 
 public class MainSamplesListActivity extends ListActivity {
 
@@ -140,6 +141,7 @@ public class MainSamplesListActivity extends ListActivity {
 			if ( _lastSelectedListItemPosition >= 0 ) {
 
 				final String className = getListActivities()[_lastSelectedListItemPosition];
+				Log.e("TEMP","className="+className);
 				final Intent intent = new Intent(this, Class.forName(className));
 				intent.putExtra(EXTRAS_KEY_ACTIVITY_TITLE_STRING,
 						this.getListLabels()[_lastSelectedListItemPosition]);

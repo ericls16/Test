@@ -1,16 +1,17 @@
 package com.wikitude.samples;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-
 import android.hardware.SensorManager;
 import android.location.LocationListener;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.wikitude.architect.ArchitectView.ArchitectUrlListener;
 import com.wikitude.architect.ArchitectView.SensorAccuracyChangeListener;
 import com.wikitude.samples.utils.urllauncher.ARchitectUrlLauncherCamActivity;
 import com.wikitude.sdksamples.R;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 
 public class SampleCamFragment extends AbstractArchitectCamFragmentV4{
@@ -63,6 +64,7 @@ public class SampleCamFragment extends AbstractArchitectCamFragmentV4{
 
 	@Override
 	public ArchitectUrlListener getUrlListener() {
+		Log.i("CALL_NATIVE","SampleCamFragment->getUrlListener()");
 		return new ArchitectUrlListener() {
 
 			@Override
