@@ -51,6 +51,7 @@ var World = {
 			/*
 				Clean Resources from previous recognitions.
 			*/
+
 			if (World.wineLabel !== undefined) {
 				World.wineLabel.destroy();
 			}

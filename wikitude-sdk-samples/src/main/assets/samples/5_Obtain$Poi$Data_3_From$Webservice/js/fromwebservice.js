@@ -139,6 +139,7 @@ var World = {
 
 /* forward locationChanges to custom function */
 AR.context.onLocationChanged = World.locationChanged;
+//AR.context.onLocationChanged =null;
 
 /* forward clicks in empty area to World */
 AR.context.onScreenClick = World.onScreenClick;

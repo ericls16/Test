@@ -25,7 +25,9 @@ var World = {
 		/*
 			The button is created similar to the overlay feature. An AR.ImageResource defines the look of the button and is reused for both buttons.
 		*/
-		this.imgButton = new AR.ImageResource("assets/wwwButton.jpg");
+//		this.imgButton = new AR.ImageResource("assets/wwwButton.jpg");
+        this.imgButton = new AR.ImageResource("https://github.com/cnlius/images/blob/master/android.jpg");
+
 
 		/*
 			The next step is to create the augmentation. In this example an image resource is created and passed to the AR.ImageDrawable. A drawable is a visual component that can be connected to an IR target (AR.Trackable2DObject) or a geolocated object (AR.GeoObject). The AR.ImageDrawable is initialized by the image and its size. Optional parameters allow for position it relative to the recognized target.
