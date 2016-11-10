@@ -25,8 +25,8 @@ var World = {
 		/*
 			The button is created similar to the overlay feature. An AR.ImageResource defines the look of the button and is reused for both buttons.
 		*/
-//		this.imgButton = new AR.ImageResource("assets/wwwButton.jpg");
-        this.imgButton = new AR.ImageResource("https://github.com/cnlius/images/blob/master/android.jpg");
+		this.imgButton = new AR.ImageResource("assets/wwwButton.jpg");
+//        this.imgButton = new AR.ImageResource("https://www.baidu.com/favicon.ico");
 
 
 		/*
@@ -70,6 +70,8 @@ var World = {
 		var weatherWidget = new AR.HtmlDrawable({
 			uri: "assets/weather.html"
 //            uri: "https://www.baidu.com"
+//            uri: "https://www.baidu.com/favicon.ico"
+
 		}, 0.25, {
 			viewportWidth: 500,
 			viewportHeight: 1000,
@@ -84,10 +86,12 @@ var World = {
 			/*对超链接的响应事件*/
 			onDocumentLocationChanged: function onDocumentLocationChangedFn(uri) {
 			    /*在新的浏览器里打开*/
-//				AR.context.openInBrowser(uri,false);
+				AR.context.openInBrowser(uri,false);
+
+                //调用原生
 //				var architectSdkUrl = "architectsdk://markerselected?id=" + encodeURIComponent("12") + "&title=" + encodeURIComponent("title") + "&description=" + encodeURIComponent("description");
-                var architectSdkUrl = "architectsdk://test?id=1001";
-                document.location = architectSdkUrl;
+//                var architectSdkUrl = "architectsdk://test?id=1001";
+//                document.location = architectSdkUrl;
 			}
 			//-------------------
 //			,
