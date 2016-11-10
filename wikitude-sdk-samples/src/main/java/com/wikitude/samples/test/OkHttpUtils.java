@@ -20,7 +20,7 @@ public class OkHttpUtils {
                 .get()
                 .url("http://www.lewei.online/android.jpg")
                 .build()
-                .execute(new FileCallBack("","") {
+                .execute(new FileCallBack("","android.jpg") {
 
                     @Override
                     public void onError(Call call, Exception e, int id) {
