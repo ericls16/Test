@@ -86,12 +86,12 @@ var World = {
 			/*对超链接的响应事件*/
 			onDocumentLocationChanged: function onDocumentLocationChangedFn(uri) {
 			    /*在新的浏览器里打开*/
-				AR.context.openInBrowser(uri,false);
+//				AR.context.openInBrowser(uri,false);
 
                 //调用原生
-//				var architectSdkUrl = "architectsdk://markerselected?id=" + encodeURIComponent("12") + "&title=" + encodeURIComponent("title") + "&description=" + encodeURIComponent("description");
+				var architectSdkUrl = "architectsdk://markerselected?id=" + encodeURIComponent("12") + "&title=" + encodeURIComponent("title") + "&description=" + encodeURIComponent("description");
 //                var architectSdkUrl = "architectsdk://test?id=1001";
-//                document.location = architectSdkUrl;
+                document.location = architectSdkUrl;
 			}
 			//-------------------
 //			,

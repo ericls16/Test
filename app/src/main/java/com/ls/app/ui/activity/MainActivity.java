@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.record_pwd:
-                startActivity(new Intent(this,Home1Activity.class));
+                startActivity(new Intent(this,AppDirActivity.class));
                 break;
             default:
                 break;
