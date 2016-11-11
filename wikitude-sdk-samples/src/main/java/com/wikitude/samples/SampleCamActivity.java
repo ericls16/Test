@@ -122,6 +122,13 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 					architectView.callJavascript(params);
 					return true;
 				}
+
+				//download file
+				if ("download".equalsIgnoreCase(invokedUri.getHost())) {
+					Log.i("download","download---download");
+//					architectView.callJavascript(params);
+					return true;
+				}
 				return true;
 			}
 		};
