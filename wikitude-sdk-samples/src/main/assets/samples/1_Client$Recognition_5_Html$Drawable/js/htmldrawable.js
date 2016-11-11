@@ -27,6 +27,8 @@ var World = {
 			The button is created similar to the overlay feature. An AR.ImageResource defines the look of the button and is reused for both buttons.
 		*/
 		this.imgButton = new AR.ImageResource("assets/wwwButton.jpg");
+//		this.imgButton = new AR.ImageResource("data/user/0/com.wikitude.sdksamples/cache/android.jpg"); //没用
+
 //        this.imgButton = new AR.ImageResource("https://www.baidu.com/favicon.ico");
 
 
