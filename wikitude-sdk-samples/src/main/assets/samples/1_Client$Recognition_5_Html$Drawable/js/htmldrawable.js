@@ -91,7 +91,8 @@ var World = {
                 //调用原生
 //				var architectSdkUrl = "architectsdk://markerselected?id=" + encodeURIComponent("12") + "&title=" + encodeURIComponent("title") + "&description=" + encodeURIComponent("description");
 //                var architectSdkUrl = "architectsdk://test?id=1001";
-                var architectSdkUrl = "architectsdk://download;
+                var architectSdkUrl = "architectsdk://download";
+//                var architectSdkUrl = "architectsdk://download?id=212";
                 document.location = architectSdkUrl;
 			}
 			//-------------------

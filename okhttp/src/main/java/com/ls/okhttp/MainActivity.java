@@ -109,6 +109,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 handler.sendMessage(msg);
             }
         }).start();
+    }
+
+    public void downLoad(){
 
     }
 

@@ -19,6 +19,8 @@ import com.wikitude.architect.ArchitectView.ArchitectUrlListener;
 import com.wikitude.architect.ArchitectView.CaptureScreenCallback;
 import com.wikitude.architect.ArchitectView.SensorAccuracyChangeListener;
 import com.wikitude.architect.StartupConfiguration.CameraPosition;
+import com.wikitude.samples.test.DownLoadListener;
+import com.wikitude.samples.test.OkHttpUtils;
 import com.wikitude.sdksamples.R;
 
 import java.io.File;
@@ -126,6 +128,7 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 				//download file
 				if ("download".equalsIgnoreCase(invokedUri.getHost())) {
 					Log.i("download","download---download");
+					goDownLoadFile();
 //					architectView.callJavascript(params);
 					return true;
 				}
@@ -134,7 +137,17 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 		};
 	}
 
-    @Override
+	private void goDownLoadFile() {
+		OkHttpUtils.downloadFile("http://www.lewei.online/android.jpg", getCacheDir().getAbsolutePath(), "android.jpg", new DownLoadListener() {
+			@Override
+			public void callBack(File response, int id) {
+//				architectView.callJavascript(response.getAbsolutePath());
+				Log.i("download","download---complete");
+			}
+		});
+	}
+
+	@Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case WIKITUDE_PERMISSIONS_REQUEST_EXTERNAL_STORAGE: {
