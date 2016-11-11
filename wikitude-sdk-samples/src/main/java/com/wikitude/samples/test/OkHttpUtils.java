@@ -15,7 +15,7 @@ import okhttp3.Call;
 public class OkHttpUtils {
 
 
-    public static void downloadFile(String url,String destFileDir, String destFileName,final DownLoadListener listener) {
+    public static void downloadFile(String url,String destFileDir, String destFileName) {
         com.zhy.http.okhttp.OkHttpUtils
                 .get()
                 .url(url)
@@ -35,7 +35,7 @@ public class OkHttpUtils {
 
                     @Override
                     public void onResponse(File response, int id) {
-                        listener.callBack(response,id);
+
                     }
                 });
     }

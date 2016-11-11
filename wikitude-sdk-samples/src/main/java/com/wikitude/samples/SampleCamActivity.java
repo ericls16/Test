@@ -19,12 +19,13 @@ import com.wikitude.architect.ArchitectView.ArchitectUrlListener;
 import com.wikitude.architect.ArchitectView.CaptureScreenCallback;
 import com.wikitude.architect.ArchitectView.SensorAccuracyChangeListener;
 import com.wikitude.architect.StartupConfiguration.CameraPosition;
-import com.wikitude.samples.test.DownLoadListener;
-import com.wikitude.samples.test.OkHttpUtils;
 import com.wikitude.sdksamples.R;
+import com.zhy.http.okhttp.callback.FileCallBack;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import okhttp3.Call;
 
 public class SampleCamActivity extends AbstractArchitectCamActivity {
 
@@ -127,9 +128,9 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 
 				//download file
 				if ("download".equalsIgnoreCase(invokedUri.getHost())) {
-					Log.i("download","download---download");
+					String id=invokedUri.getQueryParameter("id");
+					Log.i("download","download---download-id="+id);
 					goDownLoadFile();
-//					architectView.callJavascript(params);
 					return true;
 				}
 				return true;
@@ -138,13 +139,40 @@ public class SampleCamActivity extends AbstractArchitectCamActivity {
 	}
 
 	private void goDownLoadFile() {
-		OkHttpUtils.downloadFile("http://www.lewei.online/android.jpg", getCacheDir().getAbsolutePath(), "android.jpg", new DownLoadListener() {
-			@Override
-			public void callBack(File response, int id) {
-//				architectView.callJavascript(response.getAbsolutePath());
-				Log.i("download","download---complete");
-			}
-		});
+		File file = new File(getCacheDir().getAbsolutePath() + "/android.jpg");
+		if(file.exists()){
+			Log.i("download","delete");
+			file.delete();
+		}
+
+		downloadFile("https://github.com/cnlius/images/blob/master/android.jpg", getCacheDir().getAbsolutePath(), "android.jpg");
+	}
+
+	public void downloadFile(String url,String destFileDir, String destFileName) {
+		com.zhy.http.okhttp.OkHttpUtils
+				.get()
+				.url(url)
+				.build()
+				.execute(new FileCallBack(destFileDir,destFileName) {
+
+					@Override
+					public void inProgress(float progress, long total, int id) {
+						super.inProgress(progress, total, id);
+						Log.i("download","download---progress"+progress);
+					}
+
+					@Override
+					public void onError(Call call, Exception e, int id) {
+						Log.i("download","download="+e);
+					}
+
+					@Override
+					public void onResponse(File response, int id) {
+						String params="World.loadPoisFromJsonData" + "( '" + response.getAbsolutePath() + "' );";
+						Log.i("download","download---onResponse"+response.getAbsolutePath());
+						architectView.callJavascript(params);
+					}
+				});
 	}
 
 	@Override

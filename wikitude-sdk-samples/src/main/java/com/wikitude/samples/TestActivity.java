@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.wikitude.samples.test.DownLoadListener;
-import com.wikitude.samples.test.OkHttpUtils;
 import com.wikitude.sdksamples.R;
+import com.zhy.http.okhttp.callback.FileCallBack;
 
 import java.io.File;
+
+import okhttp3.Call;
 
 /**
  * Created by VIC1 on 2016/11/7.
@@ -31,11 +32,31 @@ public class TestActivity extends Activity {
     }
 
     private void goDownLoadFile() {
-        OkHttpUtils.downloadFile("http://www.lewei.online/android.jpg", getCacheDir().getAbsolutePath(), "android.jpg", new DownLoadListener() {
-            @Override
-            public void callBack(File response, int id) {
-                Log.i("download","download---complete");
-            }
-        });
+        downloadFile("https://github.com/cnlius/images/blob/master/android.jpg", getCacheDir().getAbsolutePath(), "android.jpg");
+    }
+
+    public void downloadFile(String url,String destFileDir, String destFileName) {
+        com.zhy.http.okhttp.OkHttpUtils
+                .get()
+                .url(url)
+                .build()
+                .execute(new FileCallBack(destFileDir,destFileName) {
+
+                    @Override
+                    public void inProgress(float progress, long total, int id) {
+                        super.inProgress(progress, total, id);
+                        Log.i("download","download---progress"+progress);
+                    }
+
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.i("download","download="+e);
+                    }
+
+                    @Override
+                    public void onResponse(File response, int id) {
+                        Log.i("download","download---onResponse");
+                    }
+                });
     }
 }
