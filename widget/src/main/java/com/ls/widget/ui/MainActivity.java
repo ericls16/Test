@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.switch_test:
                 startActivity(new Intent(this, SwitchTestActivity.class));
                 break;
+            case R.id.test_x:
+                startActivity(new Intent(this, SwitchTestActivity.class));
+                break;
             default:
                 break;
         }

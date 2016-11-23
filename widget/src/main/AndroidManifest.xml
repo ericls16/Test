@@ -12,55 +12,67 @@
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <!--RecyclerView-->
         <activity
             android:name=".ui.xrecyclerview.RvMainActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_main"
-            android:configChanges="keyboardHidden|orientation|screenSize">>
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity
             android:name=".ui.xrecyclerview.RvListActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_list"
-            android:configChanges="keyboardHidden|orientation|screenSize">>
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity
             android:name=".ui.xrecyclerview.RvListAllActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_list_all"
-            android:configChanges="keyboardHidden|orientation|screenSize">>
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity
             android:name=".ui.xrecyclerview.RvGridActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_grid"
-            android:configChanges="keyboardHidden|orientation|screenSize">>
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity
             android:name=".ui.xrecyclerview.RvGridAllActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_grid_all"
-            android:configChanges="keyboardHidden|orientation|screenSize">>
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity
             android:name=".ui.xrecyclerview.RvItemLineActivity"
             android:screenOrientation="portrait"
             android:label="@string/rv_item_line"
-            android:configChanges="keyboardHidden|orientation|screenSize">>
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <!--Switch-->
         <activity
             android:name=".ui.xswitch.SwitchTestActivity"
             android:screenOrientation="portrait"
             android:label="@string/switch_test"
-            android:configChanges="keyboardHidden|orientation|screenSize">>
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".ui.TestX"
+            android:screenOrientation="portrait"
+            android:label="@string/switch_test"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
