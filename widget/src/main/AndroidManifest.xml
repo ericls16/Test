@@ -64,7 +64,7 @@
         </activity>
 
         <activity
-            android:name=".ui.TestX"
+            android:name=".ui.BadgeDemo"
             android:screenOrientation="portrait"
             android:label="@string/switch_test"
             android:configChanges="keyboardHidden|orientation|screenSize">
