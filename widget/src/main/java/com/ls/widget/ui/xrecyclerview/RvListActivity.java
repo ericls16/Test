@@ -42,7 +42,9 @@ public class RvListActivity extends AppCompatActivity {
     private void initView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         //设置布局管理器
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setAutoMeasureEnabled(true);
+        mRecyclerView.setLayoutManager(layoutManager);
         //设置item增加或移除动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //设置自定义分割线
