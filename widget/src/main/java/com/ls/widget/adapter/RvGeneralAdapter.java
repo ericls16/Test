@@ -1,6 +1,7 @@
 package com.ls.widget.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import com.ls.widget.R;
 
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * 包含点击事件的监听
@@ -43,7 +46,13 @@ public class RvGeneralAdapter extends RecyclerView.Adapter<RvGeneralAdapter.MyVi
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
+        Log.d("onBindViewHolder", "onBindViewHolder: 验证是否重用了");
+        Log.d("onBindViewHolder", "onBindViewHolder: 重用了"+holder.mContent.getTag());
+        Log.d("onBindViewHolder", "onBindViewHolder: 放到了"+data.get(position));
+
+        holder.mContent.setTag(data.get(position)); //设置tag用于测试重用机制
         holder.mContent.setText(data.get(position));
+
 
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickListener != null) {
